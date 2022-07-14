@@ -37,14 +37,34 @@ public class Player : MonoBehaviour
 
         transform.position = curPos + nextPos;
 
-        if (Input.GetButtonDown("Horizontal")||Input.GetButtonUp("Horizontal"))
+
+
+        if(Input.GetAxisRaw("Vertical") == 0 && Input.GetAxisRaw("Horizontal") == 0)
         {
-            anim.SetInteger("Horizontal", (int)h);
+            anim.SetInteger("WalkUD",0);
+            anim.SetInteger("WalkRL", 0);
         }
-        else if (Input.GetButtonDown("Vertical") || Input.GetButtonUp("Vertical"))
+        else
         {
-            anim.SetInteger("Vertical", (int)v);
+            if (Input.GetAxisRaw("Vertical") < 0)
+            {
+                anim.SetInteger("WalkUD", -1);
+            }
+            else if (Input.GetAxisRaw("Vertical") > 0)
+            {
+                anim.SetInteger("WalkUD", 1);
+            }
+            else if (Input.GetAxisRaw("Horizontal") < 0)
+            {
+                anim.SetInteger("WalkRL", -1);
+            }
+            else if (Input.GetAxisRaw("Horizontal") >0)
+            {
+                anim.SetInteger("WalkRL", 1);
+            }
         }
+
+        
     }
 
 
