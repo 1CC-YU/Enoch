@@ -16,7 +16,12 @@ public class Player : MonoBehaviour
     private int mastery;
     private int power;
     private int luck;
+    private Animator anim;
 
+    void Awake()
+    {
+        anim = GetComponent<Animator>();
+    }
 
     void Update()
     {
@@ -31,6 +36,15 @@ public class Player : MonoBehaviour
         Vector3 nextPos = new Vector3(h, v, 0) * mSpeed * Time.deltaTime;
 
         transform.position = curPos + nextPos;
+
+        if (Input.GetButtonDown("Horizontal")||Input.GetButtonUp("Horizontal"))
+        {
+            anim.SetInteger("Horizontal", (int)h);
+        }
+        else if (Input.GetButtonDown("Vertical") || Input.GetButtonUp("Vertical"))
+        {
+            anim.SetInteger("Vertical", (int)v);
+        }
     }
 
 
