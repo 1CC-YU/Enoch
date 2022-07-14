@@ -37,34 +37,38 @@ public class Player : MonoBehaviour
 
         transform.position = curPos + nextPos;
 
+        float _dirX = Input.GetAxisRaw("Horizontal");
+        float _dirY = Input.GetAxisRaw("Vertical");
+
+        Vector3 direction = new Vector3(_dirX, _dirY);
+        anim.SetBool("Right", false);
+        anim.SetBool("Left", false);
+        anim.SetBool("Down", false);
+        anim.SetBool("Up", false);
 
 
-        if(Input.GetAxisRaw("Vertical") == 0 && Input.GetAxisRaw("Horizontal") == 0)
+        if (direction != Vector3.zero)
         {
-            anim.SetInteger("WalkUD",0);
-            anim.SetInteger("WalkRL", 0);
-        }
-        else
-        {
-            if (Input.GetAxisRaw("Vertical") < 0)
-            {
-                anim.SetInteger("WalkUD", -1);
-            }
-            else if (Input.GetAxisRaw("Vertical") > 0)
-            {
-                anim.SetInteger("WalkUD", 1);
-            }
-            else if (Input.GetAxisRaw("Horizontal") < 0)
-            {
-                anim.SetInteger("WalkRL", -1);
-            }
-            else if (Input.GetAxisRaw("Horizontal") >0)
-            {
-                anim.SetInteger("WalkRL", 1);
-            }
-        }
+            this.transform.Translate(direction.normalized * mSpeed * Time.deltaTime);
 
-        
+            if (direction.y > 0)
+            {
+                anim.SetBool("Up", true);
+            }
+            else if (direction.y < 0)
+            {
+                anim.SetBool("Down", true);
+            }
+            else if (direction.x > 0)
+            {
+                anim.SetBool("Right", true);
+            }
+            else if (direction.x < 0)
+            {
+                anim.SetBool("Left", true);
+            }
+            
+        }
     }
 
 
