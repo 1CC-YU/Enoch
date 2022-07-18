@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
     private int mMastery;
     private int mPower;
     private int mLuck;
+    private int mLevel;
     private Animator mAnim;
 
     private void Awake()
@@ -70,7 +71,9 @@ public class Player : MonoBehaviour
 
     private void mining()
     {
+
         // 채광 종류 별로 태그(tag)로 줄것인지, 리스트화(enum) 시킬 것인지
+
     }
 
 
