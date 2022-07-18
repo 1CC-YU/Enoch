@@ -132,6 +132,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 345571}
+  - component: {fileID: 345572}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -152,6 +153,94 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &345572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 345570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4d61da2b5cafab498057c54bbd1aa24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerData:
+    mSpeed: 0
+    health: 0
+    depend: 0
+    mastery: 0
+    power: 0
+    luck: 0
+    items: []
+--- !u!1 &29603427
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 29603429}
+  - component: {fileID: 29603428}
+  m_Layer: 0
+  m_Name: DBManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &29603428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 29603427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0455445fb67d3624d94764007b83770e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  var_name: []
+  var: []
+  switch_name: []
+  switches: 
+  itemList:
+  - itemID: 1001
+    itemName: stone
+    itemDescription: "\uB3CC"
+    itemCount: 0
+  - itemID: 1002
+    itemName: iron
+    itemDescription: 
+    itemCount: 0
+  - itemID: 1003
+    itemName: copper
+    itemDescription: 
+    itemCount: 0
+  - itemID: 1004
+    itemName: ruby
+    itemDescription: 
+    itemCount: 0
+  - itemID: 1005
+    itemName: diamond
+    itemDescription: 
+    itemCount: 0
+--- !u!4 &29603429
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 29603427}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &963194225
 GameObject:
