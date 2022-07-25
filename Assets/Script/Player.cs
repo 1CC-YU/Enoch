@@ -18,6 +18,8 @@ public class Player : MonoBehaviour
     public int mLuck;
     public int mLevel;
     public Animator mAnim;
+    public int mExp;
+
 
     private void Awake()
     {
@@ -80,5 +82,13 @@ public class Player : MonoBehaviour
     private void attack()
     {
 
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Monster")
+        {
+
+        }
     }
 }
