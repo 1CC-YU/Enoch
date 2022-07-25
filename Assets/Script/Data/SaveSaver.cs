@@ -6,45 +6,33 @@ using System.IO;
 
 public class SaveSaver : MonoBehaviour
 {
-    private Player thePlayer;
-    public Playerdata data;
+    public PlayerData playerData;
     [ContextMenu("To Json Data")]
     void Saver()
     {
-        thePlayer = FindObjectOfType<Player>();
-        data.mSpeed = thePlayer.mSpeed;
-        data.health = thePlayer.mHealth;
-        data.depend = thePlayer.mDepend;
-        data.mastery = thePlayer.mMastery;
-        data.power = thePlayer.mPower;
-        data.luck = thePlayer.mLuck;
-        data.level = thePlayer.mLevel;
-
-        string jsonData = JsonUtility.ToJson(data,true);
-        string savePath = Path.Combine(Application.dataPath,"data.json");
+        string jsonData = JsonUtility.ToJson(playerData,true);
+        string savePath = Path.Combine(Application.dataPath,"playerData.json");
         File.WriteAllText(savePath,jsonData);
     }
 
     [ContextMenu("From Json Data")]
     void Loader()
     {
-        string savePath = Path.Combine(Application.dataPath,"data.json");
+        string savePath = Path.Combine(Application.dataPath,"playerData.json");
         string jsonData = File.ReadAllText(savePath);
-        data = JsonUtility.FromJson<Playerdata>(jsonData);
+        playerData = JsonUtility.FromJson<PlayerData>(jsonData);
 
     }
 }
 
 
 [System.Serializable]
-public class Playerdata{
+public class PlayerData{
     public float mSpeed;
     public int health;
     public int depend;
     public int mastery;
     public int power;
     public int luck;
-    public int level;
-    public List<int> items;
-    public List<int> itemsCount;
-}  
+    public string[] items;
+}   

@@ -20,14 +20,13 @@ public class DBManager : MonoBehaviour
 
         }
     }
-    //ï¿½ï¿½Ä¡ : 
+    //¼öÄ¡ : 
     public string[] var_name;
     public float[] var;
-    // itemï¿½ï¿½
+    // itemµé
     public string[] switch_name;
     public bool[] switches;
     public List<Items> itemList = new List<Items>();
-   // public List<Monster> monsterList = new List<Monster>();
 
 
     void Start()

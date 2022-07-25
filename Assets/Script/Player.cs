@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    //ï¿½ï¿½ï¿½ï¿½ =>[Ã¼ï¿½ï¿½, ï¿½ï¿½îµµ, ï¿½ï¿½ï¿½Ãµï¿½, ï¿½ï¿½, ï¿½ï¿½]
+    //½ºÅÈ =>[Ã¼·Â, ¹æ¾îµµ, ¼÷·Ãµµ, Èû, ¿î]
     // => [health, depend, mastery, power, luck]
-    //Ã¤ï¿½ï¿½ => [ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½, Ã¶, ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½Ì¾ï¿½]
+    //Ã¤±¤ => [µ¹, ±¸¸®, Ã¶, ·çºñ, ´ÙÀÌ¾Æ]
     // => [stone, copper, steel, ruby, diamond]
     
     [SerializeField]
+<<<<<<< HEAD
     public float mSpeed;
     public int mHealth;
     public int mDepend;
@@ -17,6 +18,15 @@ public class Player : MonoBehaviour
     public int mPower;
     public int mLuck;
     public int mLevel;
+=======
+    private float mSpeed;
+    private int mHealth;
+    private int mDepend;
+    private int mMastery;
+    private int mPower;
+    private int mLuck;
+    private int mLevel;
+>>>>>>> parent of 0794c70 (ì €ìž¥)
     private Animator mAnim;
 
     void Awake()
@@ -70,7 +80,7 @@ public class Player : MonoBehaviour
     {
 <<<<<<< HEAD
 
-        // Ã¤ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Â±ï¿½(tag)ï¿½ï¿½ ï¿½Ù°ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½Æ®È­(enum) ï¿½ï¿½Å³ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        // Ã¤±¤ Á¾·ù º°·Î ÅÂ±×(tag)·Î ÁÙ°ÍÀÎÁö, ¸®½ºÆ®È­(enum) ½ÃÅ³ °ÍÀÎÁö
 
 =======
         // Ã¤ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Â±ï¿½(tag)ï¿½ï¿½ ï¿½Ù°ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½Æ®È­(enum) ï¿½ï¿½Å³ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
