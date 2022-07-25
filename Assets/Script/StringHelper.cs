@@ -24,7 +24,7 @@ public class StringHelper : MonoBehaviour
 
 
     // 여기다 ENUM 써도 됨? 아니면 리스트, 그럼 LEVEL[1-10] 만들고오오
-    #region 스탯
+    #region  캐릭터 스탯
     // 숙련도 채광횟수
     public static readonly int MASTERY_1_STONE = 5;
     public static readonly int MASTERY_1_COPPER = 6;
@@ -87,5 +87,9 @@ public class StringHelper : MonoBehaviour
 
 
     #endregion
-
+    #region 몬스터 스탯
+    public static readonly float MONTER_MAX_VECTOR = 1f;
+    public static readonly float MONTER_MIN_VECTOR = -1f;
+    public static readonly float MONTER_STOP = 0f;
+    #endregion
 }
