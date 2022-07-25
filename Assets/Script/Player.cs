@@ -10,7 +10,6 @@ public class Player : MonoBehaviour
     // => [stone, copper, steel, ruby, diamond]
     
     [SerializeField]
-<<<<<<< Updated upstream
     public float mSpeed;
     public int mHealth;
     public int mDepend;
@@ -18,16 +17,7 @@ public class Player : MonoBehaviour
     public int mPower;
     public int mLuck;
     public int mLevel;
-=======
-    private float mSpeed;
-    private int mHealth;
-    private int mDepend;
-    private int mMastery;
-    private int mPower;
-    private int mLuck;
-    private int mLevel;
-    private int mExp;
->>>>>>> Stashed changes
+    public int mExp;
     private Animator mAnim;
 
     Rigidbody2D rigid;
@@ -83,13 +73,7 @@ public class Player : MonoBehaviour
 
     private void mining()
     {
-<<<<<<< HEAD
 
-        // ä�� ���� ���� �±�(tag)�� �ٰ�����, ����Ʈȭ(enum) ��ų ������
-
-=======
-        // ä�� ���� ���� �±�(tag)�� �ٰ�����, ����Ʈȭ(enum) ��ų ������
->>>>>>> bdd046e06cc1d47e1884252618625c0c1bcfd67e
     }
 
     private void attack(Transform monster)
