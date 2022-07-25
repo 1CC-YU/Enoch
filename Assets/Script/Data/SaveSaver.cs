@@ -19,7 +19,6 @@ public class SaveSaver : MonoBehaviour
         data.power = thePlayer.mPower;
         data.luck = thePlayer.mLuck;
         data.level = thePlayer.mLevel;
-        data.exp = thePlayer.mExp;
 
         string jsonData = JsonUtility.ToJson(data,true);
         string savePath = Path.Combine(Application.dataPath,"data.json");
@@ -46,7 +45,6 @@ public class Playerdata{
     public int power;
     public int luck;
     public int level;
-    public int exp;
     public List<int> items;
     public List<int> itemsCount;
 }  
