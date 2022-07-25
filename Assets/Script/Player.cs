@@ -10,7 +10,6 @@ public class Player : MonoBehaviour
     // => [stone, copper, steel, ruby, diamond]
     
     [SerializeField]
-<<<<<<< Updated upstream
     public float mSpeed;
     public int mHealth;
     public int mDepend;
@@ -18,25 +17,11 @@ public class Player : MonoBehaviour
     public int mPower;
     public int mLuck;
     public int mLevel;
-=======
-    private float mSpeed;
-    private int mHealth;
-    private int mDepend;
-    private int mMastery;
-    private int mPower;
-    private int mLuck;
-    private int mLevel;
-    private int mExp;
->>>>>>> Stashed changes
     private Animator mAnim;
-
-    Rigidbody2D rigid;
-    CapsuleCollider2D capCollider;
 
     void Awake()
     {
         mAnim = GetComponent<Animator>();
-        rigid = GetComponent<Rigidbody2D>();
     }
 
     void FixedUpdate()
@@ -92,34 +77,8 @@ public class Player : MonoBehaviour
 >>>>>>> bdd046e06cc1d47e1884252618625c0c1bcfd67e
     }
 
-    private void attack(Transform monster)
+    private void attack()
     {
-        rigid.AddForce(Vector2.up * 10, ForceMode2D.Impulse);
 
-        Monster monsterscript = monster.GetComponent<Monster>();
-        mExp += 10;
-
-    }
-    private void damage(Vector2 targetPos)
-    {
-        mHealth -= 5;
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Monster")
-        {
-            //Attack
-            if(rigid.velocity.y<0 && transform.position.y > collision.transform.position.y)
-            {
-                attack(collision.transform);
-               
-
-            }
-            else
-            {
-                damage(collision.transform.position);
-            }
-        }
     }
 }

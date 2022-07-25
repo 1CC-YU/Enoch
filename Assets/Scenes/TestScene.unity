@@ -3446,12 +3446,8 @@ GameObject:
   - component: {fileID: 1669326886}
   m_Layer: 0
   m_Name: Monster
-<<<<<<< Updated upstream
 >>>>>>> bdd046e06cc1d47e1884252618625c0c1bcfd67e
   m_TagString: Untagged
-=======
-  m_TagString: Monster
->>>>>>> Stashed changes
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
