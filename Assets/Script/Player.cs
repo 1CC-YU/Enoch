@@ -10,6 +10,15 @@ public class Player : MonoBehaviour
     // => [stone, copper, steel, ruby, diamond]
     
     [SerializeField]
+<<<<<<< HEAD
+    public float mSpeed;
+    public int mHealth;
+    public int mDepend;
+    public int mMastery;
+    public int mPower;
+    public int mLuck;
+    public int mLevel;
+=======
     private float mSpeed;
     private int mHealth;
     private int mDepend;
@@ -17,28 +26,29 @@ public class Player : MonoBehaviour
     private int mPower;
     private int mLuck;
     private int mLevel;
+>>>>>>> parent of 0794c70 (ì €ìž¥)
     private Animator mAnim;
 
-    private void Awake()
+    void Awake()
     {
         mAnim = GetComponent<Animator>();
     }
 
-    private void FixedUpdate()
+    void FixedUpdate()
     {
         movePlayer();
     }
 
     private void movePlayer()
     {
-        float h = Input.GetAxisRaw("Horizontal");
-        float v = Input.GetAxisRaw("Vertical");
+        float horizontal = Input.GetAxisRaw("Horizontal");
+        float vertical = Input.GetAxisRaw("Vertical");
         Vector3 curPos = transform.position;
-        Vector3 nextPos = new Vector3(h, v, 0).normalized * mSpeed * Time.deltaTime;
+        Vector3 nextPos = new Vector3(horizontal, vertical, 0).normalized * mSpeed * Time.deltaTime;
 
         transform.position = curPos + nextPos;
 
-        Vector3 direction = new Vector3(h, v);
+        Vector3 direction = new Vector3(horizontal, vertical);
         mAnim.SetBool("Right", false);
         mAnim.SetBool("Left", false);
         mAnim.SetBool("Down", false);
@@ -47,7 +57,6 @@ public class Player : MonoBehaviour
 
         if (direction != Vector3.zero)
         {
-
             if (direction.y > 0)
             {
                 mAnim.SetBool("Up", true);
@@ -64,18 +73,19 @@ public class Player : MonoBehaviour
             {
                 mAnim.SetBool("Left", true);
             }
-            
         }
     }
 
-
     private void mining()
     {
+<<<<<<< HEAD
 
         // Ã¤±¤ Á¾·ù º°·Î ÅÂ±×(tag)·Î ÁÙ°ÍÀÎÁö, ¸®½ºÆ®È­(enum) ½ÃÅ³ °ÍÀÎÁö
 
+=======
+        // Ã¤ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Â±ï¿½(tag)ï¿½ï¿½ ï¿½Ù°ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½Æ®È­(enum) ï¿½ï¿½Å³ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+>>>>>>> bdd046e06cc1d47e1884252618625c0c1bcfd67e
     }
-
 
     private void attack()
     {
