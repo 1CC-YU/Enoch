@@ -87,5 +87,9 @@ public class StringHelper : MonoBehaviour
 
 
     #endregion
+    #region ¼öÄ¡
+    public static readonly float MAX_VECTOR = 1f;
+    public static readonly float MIN_VECTOR = -1f;
+    #endregion
 
 }

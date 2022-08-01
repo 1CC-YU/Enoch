@@ -4,11 +4,6 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    //���� =>[ü��, ��, ���õ�, ��, ��]
-    // => [health, depend, mastery, power, luck]
-    //ä�� => [��, ����, ö, ���, ���̾�]
-    // => [stone, copper, steel, ruby, diamond]
-    
     [SerializeField]
     public float mSpeed;
     public int mHealth;
@@ -74,7 +69,6 @@ public class Player : MonoBehaviour
     private void mining()
     {
 
-        // ä�� ���� ���� �±�(tag)�� �ٰ�����, ����Ʈȭ(enum) ��ų ������
 
     }
 
