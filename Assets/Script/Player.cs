@@ -12,13 +12,17 @@ public class Player : MonoBehaviour
     public int mPower;
     public int mLuck;
     public int mLevel;
-    public Animator mAnim;
     public int mExp;
+
+    private Animator mAnim;
+    public DBManager DbManager;
 
 
     private void Awake()
     {
         mAnim = GetComponent<Animator>();
+        DbManager = GetComponent<DBManager>();
+
     }
 
     private void FixedUpdate()
@@ -61,14 +65,13 @@ public class Player : MonoBehaviour
             {
                 mAnim.SetBool("Left", true);
             }
-            
+
         }
     }
 
 
     private void mining()
     {
-
 
     }
 
