@@ -8,7 +8,7 @@ public class Items
    public int itemID;
    public string itemName;
    public string itemDescription;
-   public int itemCount;
+   public int miningDurablility;
 
 
    public Items(int _itemID, string _itemName, string _itemDes)
