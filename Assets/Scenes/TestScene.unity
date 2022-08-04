@@ -3643,15 +3643,7 @@ MonoBehaviour:
   var: []
   switch_name: []
   switches: 
-  itemList:
-  - itemID: 1001
-    itemName: Stone
-    itemDescription: "\uB3CC"
-    miningDurablility: 10
-  - itemID: 1002
-    itemName: Copper
-    itemDescription: "\uAD6C\uB9AC"
-    miningDurablility: 40
+  itemList: []
 --- !u!4 &1436008038
 Transform:
   m_ObjectHideFlags: 0
@@ -3826,7 +3818,7 @@ MonoBehaviour:
   mLuck: 5
   mLevel: 7
   mExp: 0
-  DBManager: {fileID: 1436008037}
+  mDBManager: {fileID: 1436008037}
 --- !u!95 &1676936422
 Animator:
   serializedVersion: 3

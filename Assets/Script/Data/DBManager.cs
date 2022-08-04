@@ -17,9 +17,8 @@ public class DBManager : MonoBehaviour
 
     private void Awake()
     {
-        itemList = new List<Items>();
 
-        /*if (instance != null)
+        if (instance != null)
         {
             Destroy(this.gameObject);
         }
@@ -29,11 +28,16 @@ public class DBManager : MonoBehaviour
             DontDestroyOnLoad(this.gameObject);
             instance = this;
 
-        }*/
+        }
     }
 
     private void Start()
     {
-        itemList = new List<Items>();
+        itemList.Insert(0, new Items(){ itemID = 1, itemName = "Stone", itemDescription = "µ¹", miningDurablility = 10 });
+    }
+
+    private void Update()
+    {
+        
     }
 }

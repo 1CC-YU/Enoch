@@ -15,19 +15,18 @@ public class Player : MonoBehaviour
     public int mExp;
 
     private Animator mAnim;
-    public DBManager DbManager;
+    public DBManager mDBManager;
 
 
     private void Awake()
     {
         mAnim = GetComponent<Animator>();
-        DbManager = GetComponent<DBManager>();
-
     }
 
     private void FixedUpdate()
     {
         movePlayer();
+        mining();
     }
 
     private void movePlayer()
@@ -72,7 +71,13 @@ public class Player : MonoBehaviour
 
     private void mining()
     {
+        if (mDBManager.itemList != null)
+        {
 
+
+            Debug.Log(mDBManager.itemList);
+
+        }
     }
 
 
