@@ -218,15 +218,15 @@ MonoBehaviour:
   - itemID: 1002
     itemName: iron
     itemDescription: "\uCCA0"
-    miningDurablility: 0
+    miningDurablility: 30
   - itemID: 1003
     itemName: copper
     itemDescription: "\uAD6C\uB9AC"
-    miningDurablility: 0
+    miningDurablility: 50
   - itemID: 1004
     itemName: ruby
     itemDescription: "\uACE0\uAE09\uBCF4\uC11D"
-    miningDurablility: 0
+    miningDurablility: 70
   - itemID: 1005
     itemName: diamond
     itemDescription: "\uCD5C\uACE0\uAE09 \uAD11\uBB3C"
