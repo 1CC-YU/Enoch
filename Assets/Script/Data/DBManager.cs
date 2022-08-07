@@ -31,13 +31,5 @@ public class DBManager : MonoBehaviour
         }
     }
 
-    private void Start()
-    {
-        itemList.Insert(0, new Items(){ itemID = 1, itemName = "Stone", itemDescription = "µ¹", miningDurablility = 10 });
-    }
-
-    private void Update()
-    {
-        
-    }
+   
 }

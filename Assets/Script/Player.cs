@@ -26,7 +26,6 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         movePlayer();
-        mining();
     }
 
     private void movePlayer()
@@ -71,13 +70,13 @@ public class Player : MonoBehaviour
 
     private void mining()
     {
-        if (mDBManager.itemList != null)
+        /*if (mDBManager.itemList != null)
         {
 
 
-            Debug.Log(mDBManager.itemList);
+            //Debug.Log(mDBManager.itemList[4].itemID);
 
-        }
+        }*/
     }
 
 
@@ -86,11 +85,11 @@ public class Player : MonoBehaviour
 
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Monster")
         {
-
+            Debug.Log("¾Ç!");
         }
     }
 }
