@@ -6,31 +6,30 @@ public class DBManager : MonoBehaviour
 {
     static public DBManager instance;
 
-    private void Awake()
-    {
-        if(instance != null)
-        {
-            Destroy(this.gameObject);
-        }
-
-        else 
-        {
-            DontDestroyOnLoad(this.gameObject);
-            instance = this;
-
-        }
-    }
     //¼öÄ¡ : 
     public string[] var_name;
     public float[] var;
     // itemµé
     public string[] switch_name;
     public bool[] switches;
-    public List<Items> itemList = new List<Items>();
+    public List<Items> itemList;
 
 
-    void Start()
+    private void Awake()
     {
-        
+
+        if (instance != null)
+        {
+            Destroy(this.gameObject);
+        }
+
+        else
+        {
+            DontDestroyOnLoad(this.gameObject);
+            instance = this;
+
+        }
     }
+
+   
 }

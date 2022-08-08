@@ -12,8 +12,10 @@ public class Player : MonoBehaviour
     public int mPower;
     public int mLuck;
     public int mLevel;
-    public Animator mAnim;
     public int mExp;
+
+    private Animator mAnim;
+    public DBManager mDBManager;
 
 
     private void Awake()
@@ -61,15 +63,20 @@ public class Player : MonoBehaviour
             {
                 mAnim.SetBool("Left", true);
             }
-            
+
         }
     }
 
 
     private void mining()
     {
+        /*if (mDBManager.itemList != null)
+        {
 
 
+            //Debug.Log(mDBManager.itemList[4].itemID);
+
+        }*/
     }
 
 
@@ -78,11 +85,11 @@ public class Player : MonoBehaviour
 
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Monster")
         {
-
+            Debug.Log("¾Ç!");
         }
     }
 }
