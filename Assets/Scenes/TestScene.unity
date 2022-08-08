@@ -547,13 +547,12 @@ GameObject:
   - component: {fileID: 789901512}
   m_Layer: 0
   m_Name: Stone
-  m_TagString: Stone
+
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!70 &789901512
-CapsuleCollider2D:
+
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -562,12 +561,7 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.03876179, y: -0.05814613}
-  m_Size: {x: 1.063463, y: 0.7456183}
-  m_Direction: 1
+
 --- !u!114 &789901513
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -577,7 +571,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 789901511}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a018239cb34c6e4492e0ae360c9de51, type: 3}
+
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!212 &789901514
