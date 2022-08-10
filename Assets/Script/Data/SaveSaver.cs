@@ -9,7 +9,7 @@ public class SaveSaver : MonoBehaviour
     private Player thePlayer;
     public PlayerData data;
     [ContextMenu("To Json Data")]
-    void Saver()
+    public void Saver()
     {
         thePlayer = FindObjectOfType<Player>();
         data.mSpeed = thePlayer.mSpeed;
@@ -27,7 +27,7 @@ public class SaveSaver : MonoBehaviour
     }
 
     [ContextMenu("From Json Data")]
-    void Loader()
+    public void Loader()
     {
         string savePath = Path.Combine(Application.dataPath,"playerData.json");
         string jsonData = File.ReadAllText(savePath);

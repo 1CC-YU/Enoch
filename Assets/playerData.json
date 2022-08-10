@@ -1,0 +1,12 @@
+{
+    "mSpeed": 5.0,
+    "health": 335,
+    "depend": 70,
+    "mastery": 50,
+    "power": 100,
+    "luck": 5,
+    "level": 7,
+    "exp": 0,
+    "items": [],
+    "itemsCount": []
+}

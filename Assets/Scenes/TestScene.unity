@@ -3728,6 +3728,7 @@ MonoBehaviour:
   mLuck: 5
   mLevel: 7
   mExp: 0
+  mSave: {fileID: 1505963300}
   mDBManager: {fileID: 1436008037}
 --- !u!95 &1676936422
 Animator:
