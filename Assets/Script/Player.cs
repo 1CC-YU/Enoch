@@ -14,10 +14,18 @@ public class Player : MonoBehaviour
     public int mLevel;
     public int mExp;
 
+    private float mcurrTime;
+
     private Animator mAnim;
+    public SaveSaver mSave;
     public DBManager mDBManager;
 
-
+    private void Start()
+    {
+        //Save만 해야하는지 Load & Save 해야하는지..
+        StartCoroutine(Load());
+        StartCoroutine(Save());
+    }
     private void Awake()
     {
         mAnim = GetComponent<Animator>();
@@ -26,6 +34,15 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         movePlayer();
+
+        mcurrTime += Time.deltaTime;
+        if (mcurrTime > 300)
+        {
+            StartCoroutine(Save());
+            StartCoroutine(Load());
+            mcurrTime = 0;
+        }
+
     }
 
     private void movePlayer()
@@ -65,16 +82,18 @@ public class Player : MonoBehaviour
             }
 
         }
+
     }
 
 
     private void mining()
     {
+        
         /*if (mDBManager.itemList != null)
         {
 
 
-            //Debug.Log(mDBManager.itemList[4].itemID);
+            Debug.Log(mDBManager.itemList[4].itemID);
 
         }*/
     }
@@ -91,5 +110,16 @@ public class Player : MonoBehaviour
         {
             Debug.Log("악!");
         }
+    }
+
+    IEnumerator Save()
+    {
+        mSave.Saver();
+        yield return new WaitForSeconds(300f);
+    }
+    IEnumerator Load()
+    {
+        mSave.Loader();
+        yield return new WaitForSeconds(300f);
     }
 }
