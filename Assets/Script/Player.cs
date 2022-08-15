@@ -15,6 +15,10 @@ public class Player : MonoBehaviour
     public int mExp;
 
     private float mcurrTime;
+    private float mMiningTime;
+    bool mlAttack;
+    bool zDown;
+    bool isMining;
 
     private Animator mAnim;
     public SaveSaver mSave;
@@ -30,7 +34,11 @@ public class Player : MonoBehaviour
     {
         mAnim = GetComponent<Animator>();
     }
+    private void Update()
+    {
+        mining();
 
+    }
     private void FixedUpdate()
     {
         movePlayer();
@@ -88,20 +96,22 @@ public class Player : MonoBehaviour
 
     private void mining()
     {
-        
-        /*if (mDBManager.itemList != null)
+        if(Input.GetButtonDown("Jump"))
         {
-
-
-            Debug.Log(mDBManager.itemList[4].itemID);
-
-        }*/
+            mAnim.SetTrigger("doMining");
+        }
     }
 
 
     private void attack()
     {
 
+    }
+
+    private void GetInput()
+    {
+        mlAttack = Input.GetButtonDown("Jump");
+        //zDown = Input.GetButton("Z");
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
