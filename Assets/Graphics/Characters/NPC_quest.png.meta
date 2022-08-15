@@ -1,31 +1,31 @@
 fileFormatVersion: 2
-guid: 2a479ab90b587644db5b5ee1f0cfa2b5
+guid: a9e988f598fe148a993a4ca8b5f8e3c1
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -16793423984005362
-    second: gems_0
+      213: 1726707555400261323
+    second: NPC_quest_0
   - first:
-      213: -4672790576089934573
-    second: gems_1
+      213: -8450064959539406127
+    second: NPC_quest_1
   - first:
-      213: 3598714856469743548
-    second: gems_2
+      213: -1011778807846258819
+    second: NPC_quest_2
   - first:
-      213: -2511356291957038328
-    second: gems_3
+      213: -2923378104998483687
+    second: NPC_quest_3
   - first:
-      213: -7335531085601356040
-    second: gems_4
+      213: -6141338194844880430
+    second: NPC_quest_4
   - first:
-      213: 8486993253046354261
-    second: gems_5
+      213: 196148776859266417
+    second: NPC_quest_5
   - first:
-      213: 5840603745321418647
-    second: gems_6
+      213: 4934372983013203103
+    second: NPC_quest_6
   - first:
-      213: -7995427946482172144
-    second: gems_7
+      213: -5725576486656801484
+    second: NPC_quest_7
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -115,169 +115,169 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: gems_0
+      name: NPC_quest_0
       rect:
         serializedVersion: 2
-        x: 2
-        y: 69
-        width: 14
-        height: 14
+        x: 5
+        y: 121
+        width: 33
+        height: 38
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e0feed8487654cff0800000000000000
-      internalID: -16793423984005362
+      spriteID: bce9d968f5f76f710800000000000000
+      internalID: 1726707555400261323
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gems_1
+      name: NPC_quest_1
       rect:
         serializedVersion: 2
-        x: 19
-        y: 69
-        width: 13
-        height: 13
+        x: 45
+        y: 121
+        width: 33
+        height: 36
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 315dd528ab9e62fb0800000000000000
-      internalID: -4672790576089934573
+      spriteID: 1da9dad80b65bba80800000000000000
+      internalID: -8450064959539406127
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gems_2
+      name: NPC_quest_2
       rect:
         serializedVersion: 2
-        x: 35
-        y: 70
-        width: 16
-        height: 13
+        x: 12
+        y: 81
+        width: 23
+        height: 38
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cb7cccb581431f130800000000000000
-      internalID: 3598714856469743548
+      spriteID: d773e0fe88075f1f0800000000000000
+      internalID: -1011778807846258819
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gems_3
+      name: NPC_quest_3
       rect:
         serializedVersion: 2
-        x: 54
-        y: 70
-        width: 12
-        height: 12
+        x: 52
+        y: 81
+        width: 23
+        height: 36
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 803657912ced52dd0800000000000000
-      internalID: -2511356291957038328
+      spriteID: 919296b2a131e67d0800000000000000
+      internalID: -2923378104998483687
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gems_4
+      name: NPC_quest_4
       rect:
         serializedVersion: 2
-        x: 70
-        y: 69
-        width: 13
-        height: 15
+        x: 6
+        y: 41
+        width: 23
+        height: 38
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8f645ebc755f23a90800000000000000
-      internalID: -7335531085601356040
+      spriteID: 2d17bb2337595caa0800000000000000
+      internalID: -6141338194844880430
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gems_5
+      name: NPC_quest_5
       rect:
         serializedVersion: 2
-        x: 3
-        y: 53
-        width: 12
-        height: 13
+        x: 46
+        y: 41
+        width: 23
+        height: 36
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 55107fac56bd7c570800000000000000
-      internalID: 8486993253046354261
+      spriteID: 17de2d7f54cd8b200800000000000000
+      internalID: 196148776859266417
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gems_6
+      name: NPC_quest_6
       rect:
         serializedVersion: 2
-        x: 18
-        y: 53
-        width: 14
-        height: 12
+        x: 4
+        y: 1
+        width: 33
+        height: 38
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 79ff2b9592efd0150800000000000000
-      internalID: 5840603745321418647
+      spriteID: f9c59c9a51a6a7440800000000000000
+      internalID: 4934372983013203103
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gems_7
+      name: NPC_quest_7
       rect:
         serializedVersion: 2
-        x: 36
-        y: 52
-        width: 13
-        height: 16
+        x: 44
+        y: 1
+        width: 32
+        height: 36
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 01ff2bee4a88a0190800000000000000
-      internalID: -7995427946482172144
+      spriteID: 4350e72558aaa80b0800000000000000
+      internalID: -5725576486656801484
       vertices: []
       indices: 
       edges: []
