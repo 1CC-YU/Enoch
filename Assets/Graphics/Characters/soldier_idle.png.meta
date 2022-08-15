@@ -1,31 +1,31 @@
 fileFormatVersion: 2
-guid: 2a479ab90b587644db5b5ee1f0cfa2b5
+guid: 0138e8a8e7bacac47acd10efe32981dc
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -16793423984005362
-    second: gems_0
+      213: -5822168249741574332
+    second: soldiert_0
   - first:
-      213: -4672790576089934573
-    second: gems_1
+      213: 2072756688577826257
+    second: soldiert_1
   - first:
-      213: 3598714856469743548
-    second: gems_2
+      213: 8315395587526217977
+    second: soldiert_2
   - first:
-      213: -2511356291957038328
-    second: gems_3
+      213: 4766114466180475993
+    second: soldiert_3
   - first:
-      213: -7335531085601356040
-    second: gems_4
+      213: 2280466892827588540
+    second: soldiert_4
   - first:
-      213: 8486993253046354261
-    second: gems_5
+      213: 2030922956586263977
+    second: soldiert_5
   - first:
-      213: 5840603745321418647
-    second: gems_6
+      213: 7716037339278532528
+    second: soldiert_6
   - first:
-      213: -7995427946482172144
-    second: gems_7
+      213: -7544700651766751993
+    second: soldiert_7
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -115,169 +115,169 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: gems_0
+      name: soldiert_0
       rect:
         serializedVersion: 2
         x: 2
-        y: 69
-        width: 14
-        height: 14
+        y: 146
+        width: 28
+        height: 41
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e0feed8487654cff0800000000000000
-      internalID: -16793423984005362
+      spriteID: 44f7893f2d0833fa0800000000000000
+      internalID: -5822168249741574332
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gems_1
+      name: soldiert_1
       rect:
         serializedVersion: 2
-        x: 19
-        y: 69
-        width: 13
-        height: 13
+        x: 34
+        y: 146
+        width: 28
+        height: 39
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 315dd528ab9e62fb0800000000000000
-      internalID: -4672790576089934573
+      spriteID: 1dd0f70f939e3cc10800000000000000
+      internalID: 2072756688577826257
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gems_2
+      name: soldiert_2
       rect:
         serializedVersion: 2
-        x: 35
-        y: 70
-        width: 16
-        height: 13
+        x: 2
+        y: 98
+        width: 28
+        height: 41
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cb7cccb581431f130800000000000000
-      internalID: 3598714856469743548
+      spriteID: 9f0d951ea38366370800000000000000
+      internalID: 8315395587526217977
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gems_3
+      name: soldiert_3
       rect:
         serializedVersion: 2
-        x: 54
-        y: 70
-        width: 12
-        height: 12
+        x: 34
+        y: 98
+        width: 28
+        height: 39
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 803657912ced52dd0800000000000000
-      internalID: -2511356291957038328
+      spriteID: 95ca983ead3a42240800000000000000
+      internalID: 4766114466180475993
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gems_4
+      name: soldiert_4
       rect:
         serializedVersion: 2
-        x: 70
-        y: 68
-        width: 12
-        height: 15
+        x: 2
+        y: 50
+        width: 27
+        height: 41
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8f645ebc755f23a90800000000000000
-      internalID: -7335531085601356040
+      spriteID: cb7f60d7e88d5af10800000000000000
+      internalID: 2280466892827588540
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gems_5
+      name: soldiert_5
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 50
+        width: 27
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a5a2813ba94f2c10800000000000000
+      internalID: 2030922956586263977
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: soldiert_6
       rect:
         serializedVersion: 2
         x: 3
-        y: 53
-        width: 12
-        height: 13
+        y: 2
+        width: 27
+        height: 41
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 55107fac56bd7c570800000000000000
-      internalID: 8486993253046354261
+      spriteID: 0bfd859241fd41b60800000000000000
+      internalID: 7716037339278532528
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gems_6
+      name: soldiert_7
       rect:
         serializedVersion: 2
-        x: 18
-        y: 53
-        width: 14
-        height: 12
+        x: 35
+        y: 2
+        width: 27
+        height: 39
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 79ff2b9592efd0150800000000000000
-      internalID: 5840603745321418647
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: gems_7
-      rect:
-        serializedVersion: 2
-        x: 36
-        y: 52
-        width: 13
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 01ff2bee4a88a0190800000000000000
-      internalID: -7995427946482172144
+      spriteID: 70dd8c21bb6db4790800000000000000
+      internalID: -7544700651766751993
       vertices: []
       indices: 
       edges: []
