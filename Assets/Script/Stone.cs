@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Stone : MonoBehaviour
 {
+    
+
     void Start()
     {
         
@@ -12,5 +14,10 @@ public class Stone : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void OnMined()
+    {
+
     }
 }
