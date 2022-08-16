@@ -36,12 +36,13 @@ public class Player : MonoBehaviour
     }
     private void Update()
     {
-        mining();
-
+        movePlayer();
+        miningPlayer();
     }
+
     private void FixedUpdate()
     {
-        movePlayer();
+       
 
         mcurrTime += Time.deltaTime;
         if (mcurrTime > 300)
@@ -90,35 +91,41 @@ public class Player : MonoBehaviour
             }
 
         }
-
+        
     }
-
-
-    private void mining()
+    private void miningPlayer()
     {
-        if(Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump"))
         {
             mAnim.SetTrigger("doMining");
         }
     }
 
+    private void mining(Transform stones)
+    {
+        
+        Stone stone = stones.GetComponent<Stone>();
+        stone.OnMined();
+    }
 
-    private void attack()
+
+    private void OnAttack()
     {
 
     }
 
-    private void GetInput()
-    {
-        mlAttack = Input.GetButtonDown("Jump");
-        //zDown = Input.GetButton("Z");
-    }
+  
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Monster")
         {
-            Debug.Log("¾Ç!");
+
+        }
+        if(collision.gameObject.tag == "Stone")
+        {
+            Debug.Log("¸¶ÀÌ´×");
+            mining(collision.transform);
         }
     }
 
