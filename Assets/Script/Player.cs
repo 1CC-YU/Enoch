@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField]
     public float mSpeed;
     public int mHealth;
     public int mDepend;
@@ -13,26 +12,24 @@ public class Player : MonoBehaviour
     public int mLuck;
     public int mLevel;
     public int mExp;
-
-    private float mcurrTime;
+    
+    private float mCurrTime;
     private float mMiningTime;
     bool mlAttack;
     bool zDown;
     bool isMining;
 
+    private Rigidbody2D mRB;
     private Animator mAnim;
     public SaveSaver mSave;
     public DBManager mDBManager;
-
-    private void Start()
-    {
-        //Save만 해야하는지 Load & Save 해야하는지..
-        StartCoroutine(Load());
-        StartCoroutine(Save());
-    }
     private void Awake()
     {
         mAnim = GetComponent<Animator>();
+        mRB = gameObject.GetComponent<Rigidbody2D>();
+        //Save만 해야하는지 Load & Save 해야하는지..
+        StartCoroutine(Load());
+        StartCoroutine(Save());
     }
     private void Update()
     {
@@ -42,28 +39,24 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-       
-
-        mcurrTime += Time.deltaTime;
-        if (mcurrTime > 300)
+        mCurrTime += Time.deltaTime;
+        if (mCurrTime > 300)
         {
             StartCoroutine(Save());
             StartCoroutine(Load());
-            mcurrTime = 0;
+            mCurrTime = 0;
         }
-
     }
-
     private void movePlayer()
     {
-        float h = Input.GetAxisRaw("Horizontal");
-        float v = Input.GetAxisRaw("Vertical");
+        float horizontal = Input.GetAxisRaw("Horizontal");
+        float vertical = Input.GetAxisRaw("Vertical");
+        
         Vector3 curPos = transform.position;
-        Vector3 nextPos = new Vector3(h, v, 0).normalized * mSpeed * Time.deltaTime;
-
+        Vector3 nextPos = new Vector3(horizontal, vertical, 0).normalized * mSpeed * Time.deltaTime;
         transform.position = curPos + nextPos;
 
-        Vector3 direction = new Vector3(h, v);
+        Vector3 direction = new Vector3(horizontal, vertical);
         mAnim.SetBool("Right", false);
         mAnim.SetBool("Left", false);
         mAnim.SetBool("Down", false);
