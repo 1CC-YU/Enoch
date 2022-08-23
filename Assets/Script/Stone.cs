@@ -8,6 +8,7 @@ public class Stone : MonoBehaviour
 
 
     public DBManager mDBItem;
+    public BoxCollider2D mHitZone;
     Rigidbody2D mRigid;
 
     public enum MineralState {Stone, Iron, Copper, Ruby, Diamond};
@@ -17,7 +18,7 @@ public class Stone : MonoBehaviour
     private void Awake()
     {
         mRigid = GetComponent<Rigidbody2D>();
-
+        mHitZone = GetComponent<BoxCollider2D>();
         CheckState();
     }
 
