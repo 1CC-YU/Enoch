@@ -13,7 +13,7 @@ public class DBManager : MonoBehaviour
     public string[] switch_name;
     public bool[] switches;
     public List<Items> itemList;
-
+    public List<Gems> gemsList;
 
     private void Awake()
     {
