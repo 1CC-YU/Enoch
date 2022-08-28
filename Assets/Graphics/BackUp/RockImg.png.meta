@@ -4,13 +4,13 @@ TextureImporter:
   internalIDToNameTable:
   - first:
       213: -3565642365930143160
-    second: bb59ae010e14c7dc_0
+    second: Stone_0
   - first:
       213: 1610612357558674502
-    second: bb59ae010e14c7dc_1
+    second: Stone_1
   - first:
       213: 2531223530718376851
-    second: bb59ae010e14c7dc_2
+    second: Stone_2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -100,7 +100,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: bb59ae010e14c7dc_0
+      name: Stone_0
       rect:
         serializedVersion: 2
         x: 1
@@ -108,7 +108,7 @@ TextureImporter:
         width: 38
         height: 30
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -121,7 +121,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bb59ae010e14c7dc_1
+      name: Stone_1
       rect:
         serializedVersion: 2
         x: 41
@@ -129,7 +129,7 @@ TextureImporter:
         width: 38
         height: 25
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -142,7 +142,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bb59ae010e14c7dc_2
+      name: Stone_2
       rect:
         serializedVersion: 2
         x: 81
@@ -150,7 +150,7 @@ TextureImporter:
         width: 38
         height: 14
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

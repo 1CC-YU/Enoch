@@ -1,12 +1,8 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Assets/Graphics/BackUp/Materials/shop.mat.meta
-guid: 24f734d43fbcd014eb21d0cfcb768886
-========
-guid: 76db990cf7ac2cc4f870e508c60987ed
->>>>>>>> main:Assets/Graphics/Maps/tile/ground_RE_0.asset.meta
+guid: 8089b2b9ecb67c34cbffb612f21b9f67
 NativeFormatImporter:
   externalObjects: {}
-  mainObjectFileID: 2100000
+  mainObjectFileID: 11400000
   userData: 
   assetBundleName: 
   assetBundleVariant: 

@@ -12,21 +12,25 @@ public class Player : MonoBehaviour
     public int mLuck;
     public int mLevel;
     public int mExp;
-    
+
     private float mCurrTime;
-    private float mMiningTime;
-    bool mlAttack;
-    bool zDown;
-    bool isMining;
 
     private Rigidbody2D mRB;
     private Animator mAnim;
     public SaveSaver mSave;
     public DBManager mDBManager;
+    public GameObject mHitZone;
+    private CapsuleCollider2D mCapCollider;
+
+    [SerializeField]
+    private GameObject mStoneGem;
     private void Awake()
     {
         mAnim = GetComponent<Animator>();
         mRB = gameObject.GetComponent<Rigidbody2D>();
+        mCapCollider = gameObject.GetComponent<CapsuleCollider2D>();
+
+
         //Save만 해야하는지 Load & Save 해야하는지..
         StartCoroutine(Load());
         StartCoroutine(Save());
@@ -34,7 +38,6 @@ public class Player : MonoBehaviour
     private void Update()
     {
         movePlayer();
-        miningPlayer();
     }
 
     private void FixedUpdate()
@@ -51,7 +54,8 @@ public class Player : MonoBehaviour
     {
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
-        
+        bool swing = Input.GetButtonDown("Jump");
+
         Vector3 curPos = transform.position;
         Vector3 nextPos = new Vector3(horizontal, vertical, 0).normalized * mSpeed * Time.deltaTime;
         transform.position = curPos + nextPos;
@@ -69,36 +73,34 @@ public class Player : MonoBehaviour
             if (direction.y > 0)
             {
                 mAnim.SetBool("Up", true);
+                mHitZone.transform.position = new Vector3(transform.position.x + (-0.02f), transform.position.y + 0.75f, 0);
             }
             else if (direction.y < 0)
             {
                 mAnim.SetBool("Down", true);
+                mHitZone.transform.position = new Vector3(transform.position.x + (-0.02f), transform.position.y + (-0.75f), 0);
+
             }
             else if (direction.x > 0)
             {
                 mAnim.SetBool("Right", true);
+                mHitZone.transform.position = new Vector3(transform.position.x + 0.5f, transform.position.y + (-0.2f), 0);
+
             }
             else if (direction.x < 0)
             {
                 mAnim.SetBool("Left", true);
+                mHitZone.transform.position = new Vector3(transform.position.x + (-0.5f), transform.position.y + (-0.2f), 0);
+
             }
 
         }
-        
-    }
-    private void miningPlayer()
-    {
-        if (Input.GetButtonDown("Jump"))
+
+        if (swing)
         {
             mAnim.SetTrigger("doMining");
         }
-    }
 
-    private void mining(Transform stones)
-    {
-        
-        Stone stone = stones.GetComponent<Stone>();
-        stone.OnMined();
     }
 
 
@@ -107,20 +109,24 @@ public class Player : MonoBehaviour
 
     }
 
-  
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Monster")
         {
+            //공격 당할때 구현
+            Debug.Log("악");
+        }
+       if(collision.gameObject.tag == "Gem")
+        {
 
         }
-        if(collision.gameObject.tag == "Stone")
-        {
-            Debug.Log("마이닝");
-            mining(collision.transform);
-        }
     }
+    
+
+
+
+
 
     IEnumerator Save()
     {
