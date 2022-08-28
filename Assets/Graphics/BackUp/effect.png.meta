@@ -20,6 +20,12 @@ TextureImporter:
   - first:
       213: 3143613230681548460
     second: effect_5
+  - first:
+      213: -5603356550365630772
+    second: effect_6
+  - first:
+      213: -3684681138830246548
+    second: effect_7
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -112,10 +118,10 @@ TextureImporter:
       name: effect_0
       rect:
         serializedVersion: 2
-        x: 5
-        y: 93
-        width: 70
-        height: 23
+        x: 6
+        y: 133
+        width: 67
+        height: 22
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -133,10 +139,10 @@ TextureImporter:
       name: effect_1
       rect:
         serializedVersion: 2
-        x: 84
-        y: 93
-        width: 71
-        height: 23
+        x: 86
+        y: 133
+        width: 66
+        height: 22
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -154,10 +160,10 @@ TextureImporter:
       name: effect_2
       rect:
         serializedVersion: 2
-        x: 9
-        y: 7
-        width: 23
-        height: 69
+        x: 7
+        y: 93
+        width: 67
+        height: 22
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -175,10 +181,10 @@ TextureImporter:
       name: effect_3
       rect:
         serializedVersion: 2
-        x: 38
-        y: 6
-        width: 20
-        height: 71
+        x: 87
+        y: 93
+        width: 66
+        height: 21
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -196,10 +202,10 @@ TextureImporter:
       name: effect_4
       rect:
         serializedVersion: 2
-        x: 99
-        y: 6
-        width: 21
-        height: 71
+        x: 10
+        y: 7
+        width: 20
+        height: 68
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -217,10 +223,10 @@ TextureImporter:
       name: effect_5
       rect:
         serializedVersion: 2
-        x: 127
-        y: 6
-        width: 19
-        height: 71
+        x: 42
+        y: 7
+        width: 13
+        height: 68
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -230,6 +236,48 @@ TextureImporter:
       bones: []
       spriteID: ca6edf5e39b50ab20800000000000000
       internalID: 3143613230681548460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: effect_6
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 7
+        width: 16
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cce2991c7e0ec32b0800000000000000
+      internalID: -5603356550365630772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: effect_7
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 7
+        width: 13
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6df079c6026ddcc0800000000000000
+      internalID: -3684681138830246548
       vertices: []
       indices: 
       edges: []
