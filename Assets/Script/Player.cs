@@ -15,31 +15,30 @@ public class Player : MonoBehaviour
 
     private float mCurrTime;
 
-    private Rigidbody2D mRB;
     private Animator mAnim;
-    public SaveSaver mSave;
-    public DBManager mDBManager;
-    public GameObject mHitZone;
-    private CapsuleCollider2D mCapCollider;
-
     [SerializeField]
-    private GameObject mStoneGem;
+    private SaveSaver mSave;
+    [SerializeField]
+    private DBManager mDBManager;
+    [SerializeField]
+    private GameObject mHitZone;
+
+    GameObject nearobjet;
+
+    float horizontal;
+    float vertical;
+    bool swing;
+    bool getitem;
+
     private void Awake()
     {
         mAnim = GetComponent<Animator>();
-        mRB = gameObject.GetComponent<Rigidbody2D>();
-        mCapCollider = gameObject.GetComponent<CapsuleCollider2D>();
-
 
         //Save만 해야하는지 Load & Save 해야하는지..
         StartCoroutine(Load());
         StartCoroutine(Save());
     }
-    private void Update()
-    {
-        movePlayer();
-    }
-
+ 
     private void FixedUpdate()
     {
         mCurrTime += Time.deltaTime;
@@ -50,12 +49,22 @@ public class Player : MonoBehaviour
             mCurrTime = 0;
         }
     }
+
+    private void Update()
+    {
+        getInput();
+        movePlayer();
+    }
+    private void getInput()
+    {
+        horizontal = Input.GetAxisRaw("Horizontal");
+        vertical = Input.GetAxisRaw("Vertical");
+        swing = Input.GetButtonDown("Jump");
+        getitem = Input.GetButtonDown("z");
+    }
     private void movePlayer()
     {
-        float horizontal = Input.GetAxisRaw("Horizontal");
-        float vertical = Input.GetAxisRaw("Vertical");
-        bool swing = Input.GetButtonDown("Jump");
-
+        
         Vector3 curPos = transform.position;
         Vector3 nextPos = new Vector3(horizontal, vertical, 0).normalized * mSpeed * Time.deltaTime;
         transform.position = curPos + nextPos;
@@ -104,27 +113,36 @@ public class Player : MonoBehaviour
     }
 
 
-    private void OnAttack()
+    private void onAttack()
     {
 
     }
 
-
+   
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Monster")
         {
             //공격 당할때 구현
-            Debug.Log("악");
         }
-       if(collision.gameObject.tag == "Gem")
+        if (collision.gameObject.tag == "Gem")
         {
 
+            Debug.Log("닿");
+
+            if (getitem)
+            {
+                Debug.Log("줍");
+
+                if (collision.gameObject.tag == "Gem")
+                {
+                    Destroy(collision.gameObject);
+                }
+            }
         }
     }
+
     
-
-
 
 
 

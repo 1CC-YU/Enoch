@@ -65,6 +65,7 @@ public class Stone : MonoBehaviour
             Destroy(mStone);
 
             mStoneGem.SetActive(true);
+            
         }
 
     }
