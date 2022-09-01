@@ -4244,13 +4244,29 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1445249698, guid: 25281d98380fc7e42b8f05e0cb2e840f, type: 3}
+      propertyPath: m_Size.x
+      value: 0.7152271
+      objectReference: {fileID: 0}
+    - target: {fileID: 1445249698, guid: 25281d98380fc7e42b8f05e0cb2e840f, type: 3}
+      propertyPath: m_Size.y
+      value: 0.67665434
+      objectReference: {fileID: 0}
+    - target: {fileID: 1445249698, guid: 25281d98380fc7e42b8f05e0cb2e840f, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.030858994
+      objectReference: {fileID: 0}
+    - target: {fileID: 1445249698, guid: 25281d98380fc7e42b8f05e0cb2e840f, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.0038573742
+      objectReference: {fileID: 0}
     - target: {fileID: 3125358075800870733, guid: 25281d98380fc7e42b8f05e0cb2e840f, type: 3}
       propertyPath: m_RootOrder
       value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 3125358075800870733, guid: 25281d98380fc7e42b8f05e0cb2e840f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.96
+      value: 5.991
       objectReference: {fileID: 0}
     - target: {fileID: 3125358075800870733, guid: 25281d98380fc7e42b8f05e0cb2e840f, type: 3}
       propertyPath: m_LocalPosition.y

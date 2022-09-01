@@ -65,7 +65,8 @@ public class Stone : MonoBehaviour
             Destroy(mStone);
 
             mStoneGem.SetActive(true);
-            
+            mStoneGem.GetComponent<BoxCollider2D>().enabled = true;
+           
         }
 
     }

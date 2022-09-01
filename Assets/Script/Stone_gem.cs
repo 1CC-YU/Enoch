@@ -7,14 +7,12 @@ public class Stone_gem : MonoBehaviour
     public enum MineralState { Stone_gem, Iron_gem, Copper_gem, Ruby_gem, Diamond_gem};
     public MineralState state;
 
-    private BoxCollider2D boxCollider2D;
-
     private void Awake()
     {
-        boxCollider2D = GetComponent<BoxCollider2D>();
-
         CheckState();
     }
+  
+
 
     public void CheckState()
     {
@@ -34,21 +32,5 @@ public class Stone_gem : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Player")
-        {
-            boxCollider2D.enabled = true;
-            boxCollider2D.isTrigger = true;
-        }
-    }
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if(collision.gameObject.tag == "Player")
-        {
-            boxCollider2D.enabled = true;
-            boxCollider2D.isTrigger = true;
-        }
-    }
-    
+
 }

@@ -28,7 +28,7 @@ public class Player : MonoBehaviour
     float horizontal;
     float vertical;
     bool swing;
-    bool getitem;
+    bool pickup;
 
     private void Awake()
     {
@@ -60,7 +60,7 @@ public class Player : MonoBehaviour
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
         swing = Input.GetButtonDown("Jump");
-        getitem = Input.GetButtonDown("z");
+        pickup = Input.GetButtonDown("pickup");
     }
     private void movePlayer()
     {
@@ -128,16 +128,11 @@ public class Player : MonoBehaviour
         if (collision.gameObject.tag == "Gem")
         {
 
-            Debug.Log("╢Й");
-
-            if (getitem)
+            //bool isStone_gem = collision.gameObject.name.Contains("Stone_gem");
+            
+            if (pickup)
             {
-                Debug.Log("ащ");
-
-                if (collision.gameObject.tag == "Gem")
-                {
-                    Destroy(collision.gameObject);
-                }
+                collision.gameObject.SetActive(false);
             }
         }
     }
