@@ -18,6 +18,12 @@ public class Stone : MonoBehaviour
 
     [SerializeField]
     private GameObject mStoneGem;
+   
+
+
+
+    [SerializeField]
+    private ObjectManager objectManager;
 
     [SerializeField]
     private Sprite mDestroy_mid;
@@ -41,10 +47,7 @@ public class Stone : MonoBehaviour
         CheckState();
     }
 
-    private void FixedUpdate()
-    {
-
-    }
+    
 
     public void OnMined()
     {
@@ -64,11 +67,30 @@ public class Stone : MonoBehaviour
             mBoxCollider.enabled = false;
             Destroy(mStone);
 
-            mStoneGem.SetActive(true);
-            mStoneGem.GetComponent<BoxCollider2D>().enabled = true;
-           
+            switch (state)
+            {
+                case MineralState.Stone:
+                    GameObject mStoneGem = objectManager.MakeObj(Stone_gem.MineralState.Stone_gem);
+                    mStoneGem.transform.position = transform.position;
+                    break;
+                /*case MineralState.Iron:
+                    GameObject mIronGem = objectManager.MakeObj(Stone_gem.MineralState.Iron_gem);
+                    mIronGem.transform.position = transform.position;
+                    break;
+                case MineralState.Copper:
+                    GameObject mCopperGem = objectManager.MakeObj(Stone_gem.MineralState.Copper_gem);
+                    mCopperGem.transform.position = transform.position;
+                    break;
+                case MineralState.Ruby:
+                    GameObject mRubyGem = objectManager.MakeObj(Stone_gem.MineralState.Ruby_gem);
+                    mRubyGem.transform.position = transform.position;
+                    break;
+                case MineralState.Diamond:
+                    GameObject mDiamondGem = objectManager.MakeObj(Stone_gem.MineralState.Diamond_gem);
+                    mDiamondGem.transform.position = transform.position;
+                    break;*/
+            }
         }
-
     }
 
 

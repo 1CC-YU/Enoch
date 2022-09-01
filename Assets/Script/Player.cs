@@ -22,7 +22,7 @@ public class Player : MonoBehaviour
     private DBManager mDBManager;
     [SerializeField]
     private GameObject mHitZone;
-
+    
     GameObject nearobjet;
 
     float horizontal;
@@ -38,7 +38,7 @@ public class Player : MonoBehaviour
         StartCoroutine(Load());
         StartCoroutine(Save());
     }
- 
+
     private void FixedUpdate()
     {
         mCurrTime += Time.deltaTime;
@@ -54,6 +54,7 @@ public class Player : MonoBehaviour
     {
         getInput();
         movePlayer();
+        pickupItem();
     }
     private void getInput()
     {
@@ -64,7 +65,7 @@ public class Player : MonoBehaviour
     }
     private void movePlayer()
     {
-        
+
         Vector3 curPos = transform.position;
         Vector3 nextPos = new Vector3(horizontal, vertical, 0).normalized * mSpeed * Time.deltaTime;
         transform.position = curPos + nextPos;
@@ -89,17 +90,20 @@ public class Player : MonoBehaviour
                 mAnim.SetBool("Down", true);
                 mHitZone.transform.position = new Vector3(transform.position.x + (-0.02f), transform.position.y + (-0.75f), 0);
 
+
             }
             else if (direction.x > 0)
             {
                 mAnim.SetBool("Right", true);
                 mHitZone.transform.position = new Vector3(transform.position.x + 0.5f, transform.position.y + (-0.2f), 0);
 
+
             }
             else if (direction.x < 0)
             {
                 mAnim.SetBool("Left", true);
                 mHitZone.transform.position = new Vector3(transform.position.x + (-0.5f), transform.position.y + (-0.2f), 0);
+
 
             }
 
@@ -118,27 +122,41 @@ public class Player : MonoBehaviour
 
     }
 
-   
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Monster")
         {
-            //공격 당할때 구현
-        }
-        if (collision.gameObject.tag == "Gem")
-        {
-
-            //bool isStone_gem = collision.gameObject.name.Contains("Stone_gem");
-            
-            if (pickup)
-            {
-                collision.gameObject.SetActive(false);
-            }
+            //attack & 맞기 구현
         }
     }
 
-    
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if(collision.tag == "Gem")
+        {
+            nearobjet = collision.gameObject;
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if(collision.tag == "Gem")
+        {
+            nearobjet = null;
+        }
+    }
 
+    private void pickupItem()
+    {
+        if (pickup)
+        {
+            if (nearobjet.tag == "Gem")
+            {
+                Stone_gem gem = nearobjet.GetComponent<Stone_gem>();
+                Destroy(nearobjet);
+            }
+        }
+    }
 
 
     IEnumerator Save()
