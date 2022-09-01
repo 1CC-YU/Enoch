@@ -14,6 +14,10 @@ public class Monster : MonoBehaviour
     private Animator mAnim;
     private IEnumerator mMovingCoroutine;
     private IEnumerator mChasingCoroutine;
+
+    [SerializeField]
+    private int mHp;
+
     void Awake()
     {
         mRB = GetComponent<Rigidbody2D>();
@@ -59,6 +63,22 @@ public class Monster : MonoBehaviour
         yield return new WaitForSeconds(mMonsterStopTime);
         StartCoroutine(chasingMonster());
     }
+
+    public void onHit()
+    {
+        if (mHp > 0)
+        {
+            mHp--;
+            mAnim.SetTrigger("onHit");
+        }
+        else if(mHp <= 0)
+        {
+            mAnim.SetTrigger("doDie");
+            gameObject.SetActive(false);
+            StopAllCoroutines();
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.CompareTag("Player"))

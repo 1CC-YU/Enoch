@@ -49,7 +49,7 @@ public class Player : MonoBehaviour
             mCurrTime = 0;
         }
     }
-
+    
     private void Update()
     {
         getInput();
@@ -61,7 +61,7 @@ public class Player : MonoBehaviour
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
         swing = Input.GetButtonDown("Jump");
-        pickup = Input.GetButtonDown("pickup");
+        pickup = Input.GetButtonDown("Pickup");
     }
     private void movePlayer()
     {
@@ -84,6 +84,7 @@ public class Player : MonoBehaviour
             {
                 mAnim.SetBool("Up", true);
                 mHitZone.transform.position = new Vector3(transform.position.x + (-0.02f), transform.position.y + 0.75f, 0);
+                
             }
             else if (direction.y < 0)
             {
@@ -115,11 +116,15 @@ public class Player : MonoBehaviour
         }
 
     }
-
-
-    private void onAttack()
+    private void pickupItem()
     {
-
+        if (pickup && nearobjet != null)
+        {
+            if (nearobjet.tag == "Gem")
+            {
+                Destroy(nearobjet);
+            }
+        }
     }
 
 
@@ -127,36 +132,29 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.tag == "Monster")
         {
-            //attack & 맞기 구현
+
         }
+        
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if(collision.tag == "Gem")
+        if (collision.gameObject.tag == "Gem")
         {
+
             nearobjet = collision.gameObject;
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if(collision.tag == "Gem")
+        if(collision.gameObject.tag == "Gem")
         {
+
             nearobjet = null;
         }
     }
 
-    private void pickupItem()
-    {
-        if (pickup)
-        {
-            if (nearobjet.tag == "Gem")
-            {
-                Stone_gem gem = nearobjet.GetComponent<Stone_gem>();
-                Destroy(nearobjet);
-            }
-        }
-    }
+  
 
 
     IEnumerator Save()

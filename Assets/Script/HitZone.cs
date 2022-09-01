@@ -5,9 +5,11 @@ using UnityEngine;
 public class HitZone : MonoBehaviour
 {
 
+    private Animator mAnim;
+
     void Start()
     {
-        
+        mAnim = GetComponent<Animator>();
     }
 
     void Update()
@@ -24,7 +26,7 @@ public class HitZone : MonoBehaviour
 
         if(collision.gameObject.tag == "Monster")
         {
-            attackMonster();
+            attackMonster(collision.transform);
         }
     }
     private void miningStone(Transform pStone)
@@ -33,8 +35,10 @@ public class HitZone : MonoBehaviour
         stone.OnMined();
     }
 
-    private void attackMonster()
+    private void attackMonster(Transform pMonster)
     {
-
+        Monster monster = pMonster.GetComponent<Monster>();
+        monster.onHit();
+        
     }
 }
