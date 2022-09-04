@@ -73,7 +73,7 @@ public class Stone : MonoBehaviour
                     GameObject mStoneGem = objectManager.MakeObj(Stone_gem.MineralState.Stone_gem);
                     mStoneGem.transform.position = transform.position;
                     break;
-                /*case MineralState.Iron:
+                case MineralState.Iron:
                     GameObject mIronGem = objectManager.MakeObj(Stone_gem.MineralState.Iron_gem);
                     mIronGem.transform.position = transform.position;
                     break;
@@ -88,7 +88,7 @@ public class Stone : MonoBehaviour
                 case MineralState.Diamond:
                     GameObject mDiamondGem = objectManager.MakeObj(Stone_gem.MineralState.Diamond_gem);
                     mDiamondGem.transform.position = transform.position;
-                    break;*/
+                    break;
             }
         }
     }

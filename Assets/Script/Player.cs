@@ -25,8 +25,8 @@ public class Player : MonoBehaviour
     
     GameObject nearobjet;
 
-    float horizontal;
-    float vertical;
+    public float horizontal;
+    public float vertical;
     bool swing;
     bool pickup;
 
@@ -132,7 +132,7 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.tag == "Monster")
         {
-
+           
         }
         
     }
