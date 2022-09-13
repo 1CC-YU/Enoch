@@ -18,7 +18,7 @@ public class DBManager : MonoBehaviour
     private void Awake()
     {
 
-        /*if (instance != null)
+        if (instance != null)
         {
             Destroy(this.gameObject);
         }
@@ -29,6 +29,6 @@ public class DBManager : MonoBehaviour
             instance = this;
 
         }
-        */
+        
     }
 }

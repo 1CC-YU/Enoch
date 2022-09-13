@@ -595,11 +595,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2b83e296179679408cecb36aa0d964a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stoneGemProfab: {fileID: 3653157438344938197, guid: 25281d98380fc7e42b8f05e0cb2e840f, type: 3}
-  ironGemProfab: {fileID: 224000128873497013, guid: 2a5c2ffaf0025c5479728dc6082f2397, type: 3}
-  copperGemProfab: {fileID: 3522577647195480123, guid: d983116b2de36024fa8cfe7fb2cfb452, type: 3}
-  rubyGemProfab: {fileID: 6559987237843994834, guid: 97e1aee78b33ad948b656d354e97b003, type: 3}
-  diamondGemProfab: {fileID: 5396229833269166072, guid: 6668cf454d96da541b251727b4d6ab0e, type: 3}
+  stoneGemPrefab: {fileID: 3653157438344938197, guid: 25281d98380fc7e42b8f05e0cb2e840f, type: 3}
+  ironGemPrefab: {fileID: 224000128873497013, guid: 2a5c2ffaf0025c5479728dc6082f2397, type: 3}
+  copperGemPrefab: {fileID: 3522577647195480123, guid: d983116b2de36024fa8cfe7fb2cfb452, type: 3}
+  rubyGemPrefab: {fileID: 6559987237843994834, guid: 97e1aee78b33ad948b656d354e97b003, type: 3}
+  diamondGemPrefab: {fileID: 5396229833269166072, guid: 6668cf454d96da541b251727b4d6ab0e, type: 3}
 --- !u!4 &609335632
 Transform:
   m_ObjectHideFlags: 0

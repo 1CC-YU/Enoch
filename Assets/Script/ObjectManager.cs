@@ -13,15 +13,15 @@ public class ObjectManager : MonoBehaviour
 
 
     [SerializeField]
-    GameObject stoneGemProfab;
+    GameObject stoneGemPrefab;
     [SerializeField]
-    GameObject ironGemProfab;
+    GameObject ironGemPrefab;
     [SerializeField]
-    GameObject copperGemProfab;
+    GameObject copperGemPrefab;
     [SerializeField]
-    GameObject rubyGemProfab;
+    GameObject rubyGemPrefab;
     [SerializeField]
-    GameObject diamondGemProfab;
+    GameObject diamondGemPrefab;
 
 
 
@@ -40,27 +40,27 @@ public class ObjectManager : MonoBehaviour
     {
         for(int index = 0; index < stoneGem.Length; index++)
         {
-            stoneGem[index] = Instantiate(stoneGemProfab);
+            stoneGem[index] = Instantiate(stoneGemPrefab);
             stoneGem[index].SetActive(false);
         }
         for (int index = 0; index < ironGem.Length; index++)
         {
-            ironGem[index] = Instantiate(ironGemProfab);
+            ironGem[index] = Instantiate(ironGemPrefab);
             ironGem[index].SetActive(false);
         }
         for (int index = 0; index < copperGem.Length; index++)
         {
-            copperGem[index] = Instantiate(copperGemProfab);
+            copperGem[index] = Instantiate(copperGemPrefab);
             copperGem[index].SetActive(false);
         }
         for (int index = 0; index < rubyGem.Length; index++)
         {
-            rubyGem[index] = Instantiate(rubyGemProfab);
+            rubyGem[index] = Instantiate(rubyGemPrefab);
             rubyGem[index].SetActive(false);
         }
         for (int index = 0; index < diamondGem.Length; index++)
         {
-            diamondGem[index] = Instantiate(diamondGemProfab);
+            diamondGem[index] = Instantiate(diamondGemPrefab);
             diamondGem[index].SetActive(false);
         }
 
