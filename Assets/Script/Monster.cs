@@ -85,6 +85,7 @@ public class Monster : MonoBehaviour
     {
         mAnim.SetTrigger("doDie");
         yield return new WaitForSeconds(1f);
+        gameObject.SetActive(false);
         Destroy(gameObject);
 
     }

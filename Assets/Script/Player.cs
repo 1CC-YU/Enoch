@@ -23,8 +23,9 @@ public class Player : MonoBehaviour
     private DBManager mDBManager;
     [SerializeField]
     private GameObject mHitZone;
-    
+
     GameObject nearobjet;
+    GameObject gemobject;
 
     public float horizontal;
     public float vertical;
@@ -123,6 +124,8 @@ public class Player : MonoBehaviour
         {
             if (nearobjet.tag == "Gem")
             {
+                Stone_gem gem = gemobject.GetComponent<Stone_gem>();
+                Debug.Log(gem.mPrice);
                 Destroy(nearobjet);
             }
         }

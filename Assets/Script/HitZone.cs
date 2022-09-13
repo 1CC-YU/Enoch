@@ -81,6 +81,7 @@ public class HitZone : MonoBehaviour
     {
         Stone stone = pStone.GetComponent<Stone>();
         stone.OnMined();
+        
     }
 
     private void attackMonster(Transform pMonster)

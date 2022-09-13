@@ -31,13 +31,17 @@ public class Stone : MonoBehaviour
     public enum MineralState { Stone, Iron, Copper, Ruby, Diamond };
     public MineralState state;
 
+    private float mShakeTime =2f;
+    private float mShakeAmount = 0.05f;
+    private Vector3 mInitialPosition;
+
     Rigidbody2D mGemRigid;
-    BoxCollider2D mTrigger;
     Vector2 DropPow;
 
 
     private void Start()
     {
+        mInitialPosition = transform.position;
         mMining = mMiningDug;
     }
 
@@ -49,11 +53,12 @@ public class Stone : MonoBehaviour
         CheckState();
     }
 
-    
+
 
     public void OnMined()
     {
         mMining--;
+        Shake();
         Debug.Log(mMining+"/"+mMiningDug);
 
         int updown = Random.Range(1, 3);
@@ -79,34 +84,61 @@ public class Stone : MonoBehaviour
                     GameObject mStoneGem = objectManager.MakeObj(Stone_gem.MineralState.Stone_gem);
                     mStoneGem.transform.position = transform.position;
                     mGemRigid = mStoneGem.GetComponent<Rigidbody2D>();
-                    mTrigger = mStoneGem.GetComponent<BoxCollider2D>();
                     DropPow = new Vector2(leftright, updown);
                     mGemRigid.AddForce(DropPow, ForceMode2D.Impulse);
-                    mGemRigid.drag = 0.5f;
+                    mGemRigid.drag = 1.8f;
                     break;
                 case MineralState.Iron:
                     GameObject mIronGem = objectManager.MakeObj(Stone_gem.MineralState.Iron_gem);
                     mIronGem.transform.position = transform.position;
+                    mGemRigid = mIronGem.GetComponent<Rigidbody2D>();
+                    DropPow = new Vector2(leftright, updown);
+                    mGemRigid.AddForce(DropPow, ForceMode2D.Impulse);
+                    mGemRigid.drag = 1.8f;
                     break;
                 case MineralState.Copper:
                     GameObject mCopperGem = objectManager.MakeObj(Stone_gem.MineralState.Copper_gem);
                     mCopperGem.transform.position = transform.position;
+                    mGemRigid = mCopperGem.GetComponent<Rigidbody2D>();
+                    DropPow = new Vector2(leftright, updown);
+                    mGemRigid.AddForce(DropPow, ForceMode2D.Impulse);
+                    mGemRigid.drag = 1.8f;
                     break;
                 case MineralState.Ruby:
                     GameObject mRubyGem = objectManager.MakeObj(Stone_gem.MineralState.Ruby_gem);
                     mRubyGem.transform.position = transform.position;
+                    mGemRigid = mRubyGem.GetComponent<Rigidbody2D>();
+                    DropPow = new Vector2(leftright, updown);
+                    mGemRigid.AddForce(DropPow, ForceMode2D.Impulse);
+                    mGemRigid.drag = 1.8f;
                     break;
                 case MineralState.Diamond:
                     GameObject mDiamondGem = objectManager.MakeObj(Stone_gem.MineralState.Diamond_gem);
                     mDiamondGem.transform.position = transform.position;
+                    mGemRigid = mDiamondGem.GetComponent<Rigidbody2D>();
+                    DropPow = new Vector2(leftright, updown);
+                    mGemRigid.AddForce(DropPow, ForceMode2D.Impulse);
+                    mGemRigid.drag = 1.8f;
                     break;
             }
         }
     }
 
 
-
-    public void CheckState()
+    private void Shake()
+    {
+        if (mShakeTime > 0)
+        {
+            transform.position = Random.insideUnitSphere * mShakeAmount + mInitialPosition;
+            mShakeTime -= Time.deltaTime;
+        }
+        else if(mShakeTime<=0)
+        {
+            transform.position = mInitialPosition;
+            mShakeTime = 2.0f;
+        }
+    }
+    private void CheckState()
     {
         switch (state)
         {
