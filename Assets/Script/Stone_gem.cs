@@ -7,15 +7,28 @@ public class Stone_gem : MonoBehaviour
     public enum MineralState { Stone_gem, Iron_gem, Copper_gem, Ruby_gem, Diamond_gem};
     public MineralState state;
 
+    [SerializeField]
     private DBManager mDBItem;
 
     private int mPrice;
+    private int mPriceStay;
+
+    Rigidbody2D mRigid;
+    BoxCollider2D mTrigger;
+    Vector2 mDropPow;
 
     private void Awake()
     {
         CheckState();
     }
-  
+
+    private void Start()
+    {
+        mPriceStay = mPrice;
+
+        
+    }
+
 
 
     public void CheckState()

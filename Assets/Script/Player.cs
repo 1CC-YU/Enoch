@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     public int mLuck;
     public int mLevel;
     public int mExp;
+    public int mMoney;
 
     private float mCurrTime;
 

@@ -9,8 +9,8 @@ public class Stone : MonoBehaviour
 
     [SerializeField]
     private DBManager mDBItem;
-    private BoxCollider2D mBoxCollider;
     private Rigidbody2D mRigid;
+    private BoxCollider2D mBoxCollider;
     private SpriteRenderer mStoneImage;
 
     [SerializeField]
@@ -19,8 +19,6 @@ public class Stone : MonoBehaviour
     [SerializeField]
     private GameObject mStoneGem;
    
-
-
 
     [SerializeField]
     private ObjectManager objectManager;
@@ -32,6 +30,10 @@ public class Stone : MonoBehaviour
 
     public enum MineralState { Stone, Iron, Copper, Ruby, Diamond };
     public MineralState state;
+
+    Rigidbody2D mGemRigid;
+    BoxCollider2D mTrigger;
+    Vector2 DropPow;
 
 
     private void Start()
@@ -53,7 +55,11 @@ public class Stone : MonoBehaviour
     {
         mMining--;
         Debug.Log(mMining+"/"+mMiningDug);
-        
+
+        int updown = Random.Range(1, 3);
+        int leftright = Random.Range(-2, 3);
+
+
         if((mMining/mMiningDug)<=0.7)
         {
             mStoneImage.sprite = mDestroy_mid;
@@ -72,6 +78,11 @@ public class Stone : MonoBehaviour
                 case MineralState.Stone:
                     GameObject mStoneGem = objectManager.MakeObj(Stone_gem.MineralState.Stone_gem);
                     mStoneGem.transform.position = transform.position;
+                    mGemRigid = mStoneGem.GetComponent<Rigidbody2D>();
+                    mTrigger = mStoneGem.GetComponent<BoxCollider2D>();
+                    DropPow = new Vector2(leftright, updown);
+                    mGemRigid.AddForce(DropPow, ForceMode2D.Impulse);
+                    mGemRigid.drag = 0.5f;
                     break;
                 case MineralState.Iron:
                     GameObject mIronGem = objectManager.MakeObj(Stone_gem.MineralState.Iron_gem);

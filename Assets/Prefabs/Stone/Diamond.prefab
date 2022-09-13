@@ -147,7 +147,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mDBItem: {fileID: 0}
   mStone: {fileID: 7558134952021813816}
-  mStoneGem: {fileID: 0}
+  mStoneGem: {fileID: 5396229833269166072, guid: 6668cf454d96da541b251727b4d6ab0e, type: 3}
   objectManager: {fileID: 0}
   mDestroy_mid: {fileID: 598818209342530962, guid: 1208290601496dd40a6ee98564f0e9e5, type: 3}
   mDestroy_end: {fileID: -1055762614865739930, guid: 1208290601496dd40a6ee98564f0e9e5, type: 3}

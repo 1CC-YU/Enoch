@@ -125,6 +125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 2
+  mDBItem: {fileID: 0}
 --- !u!50 &181141388204660989
 Rigidbody2D:
   serializedVersion: 4

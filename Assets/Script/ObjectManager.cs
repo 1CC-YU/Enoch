@@ -4,12 +4,21 @@ using UnityEngine;
 
 public class ObjectManager : MonoBehaviour
 {
-    //enum으로 하던 배열로 하던 늘려서 구리, 루비 다 넣어야함.
     GameObject itemGem;
-
     GameObject targetPool;
 
-    public GameObject itemGemProfab;
+    [SerializeField]
+    GameObject stoneGemProfab;
+    [SerializeField]
+    GameObject ironGemProfab;
+    [SerializeField]
+    GameObject copperGemProfab;
+    [SerializeField]
+    GameObject rubyGemProfab;
+    [SerializeField]
+    GameObject diamondGemProfab;
+
+
 
     private void Awake()
     {
@@ -18,10 +27,8 @@ public class ObjectManager : MonoBehaviour
 
     private void Generate()
     {
-        
-            itemGem = Instantiate(itemGemProfab);
-            itemGem.SetActive(false);
-        
+        itemGem = Instantiate(stoneGemProfab);
+        itemGem.SetActive(false);
     }
     public GameObject MakeObj(Stone_gem.MineralState type)
     {
@@ -29,7 +36,18 @@ public class ObjectManager : MonoBehaviour
         {
             case Stone_gem.MineralState.Stone_gem:
                 targetPool = itemGem;
-                
+                break;
+            case Stone_gem.MineralState.Iron_gem:
+                targetPool = itemGem;
+                break;
+            case Stone_gem.MineralState.Copper_gem:
+                targetPool = itemGem;
+                break;
+            case Stone_gem.MineralState.Ruby_gem:
+                targetPool = itemGem;
+                break;
+            case Stone_gem.MineralState.Diamond_gem:
+                targetPool = itemGem;
                 break;
         }
         if (!targetPool.activeSelf)
@@ -46,6 +64,18 @@ public class ObjectManager : MonoBehaviour
         switch (type)
         {
             case Stone_gem.MineralState.Stone_gem:
+                targetPool = itemGem;
+                break;
+            case Stone_gem.MineralState.Iron_gem:
+                targetPool = itemGem;
+                break;
+            case Stone_gem.MineralState.Copper_gem:
+                targetPool = itemGem;
+                break;
+            case Stone_gem.MineralState.Ruby_gem:
+                targetPool = itemGem;
+                break;
+            case Stone_gem.MineralState.Diamond_gem:
                 targetPool = itemGem;
                 break;
         }
