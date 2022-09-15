@@ -118,11 +118,12 @@ MonoBehaviour:
   mSpeed: 5
   mHealth: 200
   mDepend: 70
-  mMastery: 50
+  mMastery: 5
   mPower: 100
   mLuck: 5
   mLevel: 7
   mExp: 0
+  mMoney: 0
   mSave: {fileID: 0}
   mDBManager: {fileID: 0}
   mHitZone: {fileID: 3911386483753396083}

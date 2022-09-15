@@ -17,11 +17,7 @@ public class Stone : MonoBehaviour
     private GameObject mStone;
 
     [SerializeField]
-    private GameObject mStoneGem;
-   
-
-    [SerializeField]
-    private ObjectManager objectManager;
+    private GameObject mGem;
 
     [SerializeField]
     private Sprite mDestroy_mid;
@@ -31,13 +27,14 @@ public class Stone : MonoBehaviour
     public enum MineralState { Stone, Iron, Copper, Ruby, Diamond };
     public MineralState state;
 
-    private float mShakeTime =2f;
+    private float mShakeTime = 2f;
     private float mShakeAmount = 0.05f;
     private Vector3 mInitialPosition;
 
     Rigidbody2D mGemRigid;
     Vector2 DropPow;
 
+    Player player;
 
     private void Start()
     {
@@ -59,17 +56,17 @@ public class Stone : MonoBehaviour
     {
         mMining--;
         Shake();
-        Debug.Log(mMining+"/"+mMiningDug);
+        Debug.Log(mMining + "/" + mMiningDug);
 
         int updown = Random.Range(1, 3);
         int leftright = Random.Range(-2, 3);
 
 
-        if((mMining/mMiningDug)<=0.7)
+        if ((mMining / mMiningDug) <= 0.7)
         {
             mStoneImage.sprite = mDestroy_mid;
         }
-        if((mMining / mMiningDug) <= 0.2)
+        if ((mMining / mMiningDug) <= 0.2)
         {
             mStoneImage.sprite = mDestroy_end;
         }
@@ -81,15 +78,18 @@ public class Stone : MonoBehaviour
             switch (state)
             {
                 case MineralState.Stone:
-                    GameObject mStoneGem = objectManager.MakeObj(Stone_gem.MineralState.Stone_gem);
+
+                    GameObject mStoneGem = Instantiate(mGem);
                     mStoneGem.transform.position = transform.position;
                     mGemRigid = mStoneGem.GetComponent<Rigidbody2D>();
                     DropPow = new Vector2(leftright, updown);
                     mGemRigid.AddForce(DropPow, ForceMode2D.Impulse);
                     mGemRigid.drag = 1.8f;
+
+
                     break;
                 case MineralState.Iron:
-                    GameObject mIronGem = objectManager.MakeObj(Stone_gem.MineralState.Iron_gem);
+                    GameObject mIronGem = Instantiate(mGem);
                     mIronGem.transform.position = transform.position;
                     mGemRigid = mIronGem.GetComponent<Rigidbody2D>();
                     DropPow = new Vector2(leftright, updown);
@@ -97,7 +97,7 @@ public class Stone : MonoBehaviour
                     mGemRigid.drag = 1.8f;
                     break;
                 case MineralState.Copper:
-                    GameObject mCopperGem = objectManager.MakeObj(Stone_gem.MineralState.Copper_gem);
+                    GameObject mCopperGem = Instantiate(mGem);
                     mCopperGem.transform.position = transform.position;
                     mGemRigid = mCopperGem.GetComponent<Rigidbody2D>();
                     DropPow = new Vector2(leftright, updown);
@@ -105,7 +105,7 @@ public class Stone : MonoBehaviour
                     mGemRigid.drag = 1.8f;
                     break;
                 case MineralState.Ruby:
-                    GameObject mRubyGem = objectManager.MakeObj(Stone_gem.MineralState.Ruby_gem);
+                    GameObject mRubyGem = Instantiate(mGem);
                     mRubyGem.transform.position = transform.position;
                     mGemRigid = mRubyGem.GetComponent<Rigidbody2D>();
                     DropPow = new Vector2(leftright, updown);
@@ -113,7 +113,7 @@ public class Stone : MonoBehaviour
                     mGemRigid.drag = 1.8f;
                     break;
                 case MineralState.Diamond:
-                    GameObject mDiamondGem = objectManager.MakeObj(Stone_gem.MineralState.Diamond_gem);
+                    GameObject mDiamondGem = Instantiate(mGem);
                     mDiamondGem.transform.position = transform.position;
                     mGemRigid = mDiamondGem.GetComponent<Rigidbody2D>();
                     DropPow = new Vector2(leftright, updown);
@@ -132,7 +132,7 @@ public class Stone : MonoBehaviour
             transform.position = Random.insideUnitSphere * mShakeAmount + mInitialPosition;
             mShakeTime -= Time.deltaTime;
         }
-        else if(mShakeTime<=0)
+        else if (mShakeTime <= 0)
         {
             transform.position = mInitialPosition;
             mShakeTime = 2.0f;
@@ -143,19 +143,113 @@ public class Stone : MonoBehaviour
         switch (state)
         {
             case MineralState.Stone:
-                mMiningDug = mDBItem.itemList[0].miningDurablility;
+                if (player.mMastery >= 1 && player.mMastery > 2)
+                {
+                    mMiningDug = mDBItem.itemList[0].miningDurablility;
+                }
+                else if (player.mMastery >= 3 && player.mMastery < 5)
+                {
+                    mMiningDug = mDBItem.itemList[0].miningDurablility - 1;
+                }
+                else if (player.mMastery >= 5 && player.mMastery < 7)
+                {
+                    mMiningDug = mDBItem.itemList[0].miningDurablility - 2;
+                }
+                else if (player.mMastery >= 7 && player.mMastery < 9)
+                {
+                    mMiningDug = mDBItem.itemList[0].miningDurablility - 3;
+                }
+                else if (player.mMastery >= 9 && player.mMastery <= 10)
+                {
+                    mMiningDug = mDBItem.itemList[0].miningDurablility - 4;
+                }
                 break;
             case MineralState.Iron:
-                mMiningDug = mDBItem.itemList[1].miningDurablility;
+                if (player.mMastery >= 1 && player.mMastery < 2)
+                {
+                    mMiningDug = mDBItem.itemList[1].miningDurablility;
+                }
+                else if (player.mMastery >= 3 && player.mMastery < 5)
+                {
+                    mMiningDug = mDBItem.itemList[1].miningDurablility - 1;
+
+                }
+                else if (player.mMastery >= 5 && player.mMastery < 7)
+                {
+                    mMiningDug = mDBItem.itemList[1].miningDurablility - 2;
+                }
+                else if (player.mMastery >= 7 && player.mMastery < 9)
+                {
+                    mMiningDug = mDBItem.itemList[1].miningDurablility - 3;
+                }
+                else if (player.mMastery >= 9 && player.mMastery <= 10)
+                {
+                    mMiningDug = mDBItem.itemList[1].miningDurablility - 4;
+                }
                 break;
             case MineralState.Copper:
-                mMiningDug = mDBItem.itemList[2].miningDurablility;
+                if (player.mMastery >= 1 && player.mMastery < 2)
+                {
+                    mMiningDug = mDBItem.itemList[2].miningDurablility;
+                }
+                else if (player.mMastery >= 3 && player.mMastery < 5)
+                {
+                    mMiningDug = mDBItem.itemList[2].miningDurablility - 1;
+
+                }
+                else if (player.mMastery >= 5 && player.mMastery < 7)
+                {
+                    mMiningDug = mDBItem.itemList[2].miningDurablility - 2;
+                }
+                else if (player.mMastery >= 7 && player.mMastery < 9)
+                {
+                    mMiningDug = mDBItem.itemList[2].miningDurablility - 3;
+                }
+                else if (player.mMastery >= 9 && player.mMastery <= 10)
+                {
+                    mMiningDug = mDBItem.itemList[2].miningDurablility - 4;
+                }
                 break;
             case MineralState.Ruby:
-                mMiningDug = mDBItem.itemList[3].miningDurablility;
+                if (player.mMastery >= 5 && player.mMastery < 6)
+                {
+                    mMiningDug = mDBItem.itemList[3].miningDurablility;
+                }
+                else if (player.mMastery >= 6 && player.mMastery < 8)
+                {
+                    mMiningDug = mDBItem.itemList[3].miningDurablility - 1;
+                }
+                else if (player.mMastery >= 8 && player.mMastery < 10)
+                {
+                    mMiningDug = mDBItem.itemList[3].miningDurablility - 2;
+                }
+                else if (player.mMastery >= 10 && player.mMastery < 11)
+                {
+                    mMiningDug = mDBItem.itemList[3].miningDurablility - 3;
+                }
+                else
+                {
+                    mMining = 10000;
+                }
                 break;
             case MineralState.Diamond:
-                mMiningDug = mDBItem.itemList[4].miningDurablility;
+                if (player.mMastery >= 8 && player.mMastery < 9)
+                {
+                    mMiningDug = mDBItem.itemList[4].miningDurablility;
+                }
+                else if (player.mMastery >= 9 && player.mMastery < 10)
+                {
+                    mMiningDug = mDBItem.itemList[4].miningDurablility - 1;
+                }
+                else if (player.mMastery >= 10 && player.mMastery < 11)
+                {
+                    mMiningDug = mDBItem.itemList[4].miningDurablility - 2;
+
+                }
+                else
+                {
+                    mMining = 10000;
+                }
                 break;
         }
     }

@@ -10,6 +10,7 @@ public class Stone_gem : MonoBehaviour
     [SerializeField]
     private DBManager mDBItem;
 
+    [HideInInspector]
     public int mPrice;
 
     private void Awake()
