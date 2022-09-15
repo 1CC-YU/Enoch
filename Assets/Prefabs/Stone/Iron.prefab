@@ -152,7 +152,7 @@ MonoBehaviour:
   mDestroy_mid: {fileID: -4667342283382957069, guid: 1208290601496dd40a6ee98564f0e9e5, type: 3}
   mDestroy_end: {fileID: 4982842197649876010, guid: 1208290601496dd40a6ee98564f0e9e5, type: 3}
   state: 1
-  save: {fileID: 0}
+  player: {fileID: 0}
 --- !u!1001 &1459005992
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -211,6 +211,10 @@ PrefabInstance:
     - target: {fileID: 3578481245813801412, guid: 2a5c2ffaf0025c5479728dc6082f2397, type: 3}
       propertyPath: mDBItem
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7441494237148883885, guid: 2a5c2ffaf0025c5479728dc6082f2397, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a5c2ffaf0025c5479728dc6082f2397, type: 3}

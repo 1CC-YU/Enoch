@@ -152,7 +152,7 @@ MonoBehaviour:
   mDestroy_mid: {fileID: 1610612357558674502, guid: 2aec62ec107955642bfdb0b2dc35d3f9, type: 3}
   mDestroy_end: {fileID: 2531223530718376851, guid: 2aec62ec107955642bfdb0b2dc35d3f9, type: 3}
   state: 0
-  save: {fileID: 0}
+  player: {fileID: 0}
 --- !u!1001 &6939460889839452971
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -211,6 +211,10 @@ PrefabInstance:
     - target: {fileID: 3653157438344938197, guid: 25281d98380fc7e42b8f05e0cb2e840f, type: 3}
       propertyPath: m_Name
       value: Stone_gem
+      objectReference: {fileID: 0}
+    - target: {fileID: 6263431962932144333, guid: 25281d98380fc7e42b8f05e0cb2e840f, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25281d98380fc7e42b8f05e0cb2e840f, type: 3}

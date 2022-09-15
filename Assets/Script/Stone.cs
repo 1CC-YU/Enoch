@@ -35,35 +35,52 @@ public class Stone : MonoBehaviour
     private Vector2 DropPow;
 
     [SerializeField]
-    private SaveSaver save;
+    private Player player;
+    private int mMastery;
+
+    private bool isMasteryChange;
     private void Start()
     {
+
         mInitialPosition = transform.position;
         mMining = mMiningDug;
+        mMastery = player.mMastery;
 
     }
-
+    //mMiningDug의 값은 제대로 변하는데 mMining의 값이 0으로 변함.
+    //숙련도 값이 변할때 mMiningDug의 값을 mMining이 받도록 해야함.
+    //Start문에 mMining값을 주면 0이 됨.
+    //숙련도 값이 변할때 CheckState()와 mMining = mMiningDug 를 사용해야할 것 같음.
+    //CheckState()를 Awake()에 두게 되면, 숙련도 값이 변하지 않음. 
     private void Awake()
     {
+        CheckState();
+
+
         mRigid = GetComponent<Rigidbody2D>();
         mBoxCollider = GetComponent<BoxCollider2D>();
         mStoneImage = GetComponent<SpriteRenderer>();
-        save = FindObjectOfType<SaveSaver>();
-        CheckState();
-        Debug.Log(save.data.mastery);
-
+        player = FindObjectOfType<Player>();
+        isMasteryChange = false;
         mGem.SetActive(false);
+
+
     }
-    
     private void Update()
     {
-        CheckState();
-
+        if (mMastery != player.mMastery)
+        {
+            isMasteryChange = true;
+            StartCoroutine(changeMastery());
+        }
+        isMasteryChange = false;
     }
+
 
 
     public void OnMined()
     {
+
         mMining--;
         Shake();
         Debug.Log(mMining + "/" + mMiningDug);
@@ -129,7 +146,16 @@ public class Stone : MonoBehaviour
             }
         }
     }
-
+    IEnumerator changeMastery()
+    {
+        mMastery = player.mMastery;
+        CheckState();
+        mMining = mMiningDug;
+        Debug.Log(mMastery);
+        Debug.Log(mMining);
+        yield return new WaitWhile(() => isMasteryChange == true);
+    }
+    // Luck도 똑같이 하면됨.
 
     private void Shake()
     {
@@ -149,111 +175,153 @@ public class Stone : MonoBehaviour
         switch (state)
         {
             case MineralState.Stone:
-                if (save.data.mastery == 1 && save.data.mastery == 2)
+                switch (player.mMastery)
                 {
-                    mMiningDug = mDBItem.itemList[0].miningDurablility;
+                    case 1:
+                    case 2:
+                        mMiningDug = mDBItem.itemList[0].miningDurablility;
+                        break;
+
+                    case 3:
+                    case 4:
+                        mMiningDug = mDBItem.itemList[0].miningDurablility - 1;
+                        break;
+
+                    case 5:
+                    case 6:
+                        mMiningDug = mDBItem.itemList[0].miningDurablility - 2;
+                        break;
+
+                    case 7:
+                    case 8:
+                        mMiningDug = mDBItem.itemList[0].miningDurablility - 3;
+                        break;
+
+                    case 9:
+                    case 10:
+                        mMiningDug = mDBItem.itemList[0].miningDurablility - 4;
+                        break;
                 }
-                else if(save.data.mastery == 3 && save.data.mastery == 4)
-                {
-                    mMiningDug = mDBItem.itemList[0].miningDurablility-1;
-                }
-                else if(save.data.mastery == 5&& save.data.mastery == 6)
-                {
-                    mMiningDug = mDBItem.itemList[0].miningDurablility-2;
-                }
-                else if (save.data.mastery == 7 && save.data.mastery == 8)
-                {
-                    mMiningDug = mDBItem.itemList[0].miningDurablility-3;
-                }
-                else if (save.data.mastery == 9 && save.data.mastery == 10)
-                {
-                    mMiningDug = mDBItem.itemList[0].miningDurablility-4;
-                }
-                
+
+
                 break;
             case MineralState.Iron:
-                if (save.data.mastery == 1 && save.data.mastery == 2)
+                switch (player.mMastery)
                 {
-                    mMiningDug = mDBItem.itemList[1].miningDurablility;
+                    case 1:
+                    case 2:
+                        mMiningDug = mDBItem.itemList[1].miningDurablility;
+                        break;
+
+                    case 3:
+                    case 4:
+                        mMiningDug = mDBItem.itemList[1].miningDurablility - 1;
+                        break;
+
+                    case 5:
+                    case 6:
+                        mMiningDug = mDBItem.itemList[1].miningDurablility - 2;
+                        break;
+
+                    case 7:
+                    case 8:
+                        mMiningDug = mDBItem.itemList[1].miningDurablility - 3;
+                        break;
+
+                    case 9:
+                    case 10:
+                        mMiningDug = mDBItem.itemList[1].miningDurablility - 4;
+                        break;
                 }
-                else if (save.data.mastery == 3 && save.data.mastery == 4)
-                {
-                    mMiningDug = mDBItem.itemList[1].miningDurablility-1;
-                }
-                else if (save.data.mastery == 5 && save.data.mastery == 6)
-                {
-                    mMiningDug = mDBItem.itemList[1].miningDurablility-2;
-                }
-                else if (save.data.mastery == 7 && save.data.mastery == 8)
-                {
-                    mMiningDug = mDBItem.itemList[1].miningDurablility-3;
-                }
-                else if (save.data.mastery == 9 && save.data.mastery == 10)
-                {
-                    mMiningDug = mDBItem.itemList[1].miningDurablility-4;
-                }
+
+
                 break;
             case MineralState.Copper:
-                if (save.data.mastery == 1 && save.data.mastery == 2)
+                switch (player.mMastery)
                 {
-                    mMiningDug = mDBItem.itemList[2].miningDurablility;
+                    case 1:
+                    case 2:
+                        mMiningDug = mDBItem.itemList[2].miningDurablility;
+                        break;
+
+                    case 3:
+                    case 4:
+                        mMiningDug = mDBItem.itemList[2].miningDurablility - 1;
+                        break;
+
+                    case 5:
+                    case 6:
+                        mMiningDug = mDBItem.itemList[2].miningDurablility - 2;
+                        break;
+
+                    case 7:
+                    case 8:
+                        mMiningDug = mDBItem.itemList[2].miningDurablility - 3;
+                        break;
+
+                    case 9:
+                    case 10:
+                        mMiningDug = mDBItem.itemList[2].miningDurablility - 4;
+                        break;
+
                 }
-                else if (save.data.mastery == 3 && save.data.mastery == 4)
-                {
-                    mMiningDug = mDBItem.itemList[2].miningDurablility-1;
-                }
-                else if (save.data.mastery == 5 && save.data.mastery == 6)
-                {
-                    mMiningDug = mDBItem.itemList[2].miningDurablility-2;
-                }
-                else if (save.data.mastery == 7 && save.data.mastery == 8)
-                {
-                    mMiningDug = mDBItem.itemList[2].miningDurablility-3;
-                }
-                else if (save.data.mastery == 9 && save.data.mastery == 10)
-                {
-                    mMiningDug = mDBItem.itemList[2].miningDurablility-4;
-                }
+
+
                 break;
             case MineralState.Ruby:
-                if(save.data.mastery == 5)
+                switch (player.mMastery)
                 {
-                    mMiningDug = mDBItem.itemList[3].miningDurablility;
+                    case 1:
+                    case 2:
+                        mMiningDug = 100012;
+                        break;
+
+                    case 3:
+                    case 4:
+                        mMiningDug = 100034;
+                        break;
+
+                    case 5:
+                        mMiningDug = mDBItem.itemList[3].miningDurablility;
+                        break;
+                    case 6:
+                    case 7:
+                        mMiningDug = mDBItem.itemList[3].miningDurablility - 1;
+                        break;
+
+                    case 8:
+                    case 9:
+                        mMiningDug = mDBItem.itemList[3].miningDurablility - 3;
+                        break;
+
+                    case 10:
+                        mMiningDug = mDBItem.itemList[3].miningDurablility - 4;
+                        break;
+
                 }
-                else if(save.data.mastery == 6&& save.data.mastery == 7)
-                {
-                    mMiningDug = mDBItem.itemList[3].miningDurablility-1;
-                }
-                else if(save.data.mastery == 8&& save.data.mastery == 9)
-                {
-                    mMiningDug = mDBItem.itemList[3].miningDurablility-2;
-                }
-                else if(save.data.mastery == 10)
-                {
-                    mMiningDug = mDBItem.itemList[3].miningDurablility-3;
-                }
-                else
-                {
-                    mMiningDug = 100000;
-                }
+
+
                 break;
             case MineralState.Diamond:
-                if(save.data.mastery == 8)
+                if (player.mMastery == 8)
                 {
                     mMiningDug = mDBItem.itemList[4].miningDurablility;
+
                 }
-                else if(save.data.mastery == 9)
+                else if (player.mMastery == 9)
                 {
-                    mMiningDug = mDBItem.itemList[4].miningDurablility-1;
+                    mMiningDug = mDBItem.itemList[4].miningDurablility - 1;
                 }
-                else if(save.data.mastery == 10)
+                else if (player.mMastery == 10)
                 {
-                    mMiningDug = mDBItem.itemList[4].miningDurablility-2;
+                    mMiningDug = mDBItem.itemList[4].miningDurablility - 2;
                 }
                 else
                 {
-                    mMiningDug = 100000;
+                    mMiningDug = 10456;
                 }
+
+
                 break;
         }
     }

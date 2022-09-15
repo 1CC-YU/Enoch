@@ -152,7 +152,7 @@ MonoBehaviour:
   mDestroy_mid: {fileID: 1759472493345842592, guid: 1208290601496dd40a6ee98564f0e9e5, type: 3}
   mDestroy_end: {fileID: -1866489290812987814, guid: 1208290601496dd40a6ee98564f0e9e5, type: 3}
   state: 2
-  save: {fileID: 0}
+  player: {fileID: 0}
 --- !u!1001 &205432932
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -211,6 +211,10 @@ PrefabInstance:
     - target: {fileID: 3522577647195480123, guid: d983116b2de36024fa8cfe7fb2cfb452, type: 3}
       propertyPath: m_Name
       value: Copper_gem
+      objectReference: {fileID: 0}
+    - target: {fileID: 6105760478667262499, guid: d983116b2de36024fa8cfe7fb2cfb452, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d983116b2de36024fa8cfe7fb2cfb452, type: 3}

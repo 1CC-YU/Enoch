@@ -152,7 +152,7 @@ MonoBehaviour:
   mDestroy_mid: {fileID: 598818209342530962, guid: 1208290601496dd40a6ee98564f0e9e5, type: 3}
   mDestroy_end: {fileID: -1055762614865739930, guid: 1208290601496dd40a6ee98564f0e9e5, type: 3}
   state: 4
-  save: {fileID: 0}
+  player: {fileID: 0}
 --- !u!1001 &1901790190
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -160,6 +160,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7558134952021813814}
     m_Modifications:
+    - target: {fileID: 3368115327968351712, guid: 6668cf454d96da541b251727b4d6ab0e, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 5396229833269166072, guid: 6668cf454d96da541b251727b4d6ab0e, type: 3}
       propertyPath: m_Name
       value: Diamond_gem

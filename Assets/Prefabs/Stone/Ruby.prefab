@@ -152,7 +152,7 @@ MonoBehaviour:
   mDestroy_mid: {fileID: 2067550640699417137, guid: 1208290601496dd40a6ee98564f0e9e5, type: 3}
   mDestroy_end: {fileID: 8249627225641629018, guid: 1208290601496dd40a6ee98564f0e9e5, type: 3}
   state: 3
-  save: {fileID: 0}
+  player: {fileID: 0}
 --- !u!1001 &394593079
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -160,6 +160,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6686602604949042620}
     m_Modifications:
+    - target: {fileID: 4564240821025252042, guid: 97e1aee78b33ad948b656d354e97b003, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 4820222053408544074, guid: 97e1aee78b33ad948b656d354e97b003, type: 3}
       propertyPath: m_RootOrder
       value: 0

@@ -31,25 +31,11 @@ public class Player : MonoBehaviour
     public float vertical;
     bool swing;
     bool pickup;
-    private void Start()
-    {
-        /*mSpeed = mSave.data.mSpeed;
-        mHealth = mSave.data.health;
-        mDepend = mSave.data.depend;
-        mMastery = mSave.data.mastery;
-        mPower = mSave.data.power;
-        mLuck = mSave.data.luck;
-        mLevel = mSave.data.level;
-        mExp = mSave.data.exp;
-            
-           
-        */
-    }
+    
     private void Awake()
     {
         mAnim = GetComponent<Animator>();
 
-        //Save만 해야하는지 Load & Save 해야하는지..
         StartCoroutine(Load());
         StartCoroutine(Save());
     }
@@ -127,9 +113,18 @@ public class Player : MonoBehaviour
 
         if (swing)
         {
+            //휘두를때 멈추기
             mAnim.SetTrigger("doMining");
         }
 
+    }
+
+    private void diePlayer()
+    {
+        if(mHealth <= 0)
+        {
+            //die
+        }
     }
     private void pickupItem()
     {
@@ -170,9 +165,7 @@ public class Player : MonoBehaviour
         }
     }
 
-  
-
-
+   
     IEnumerator Save()
     {
         mSave.Saver();
