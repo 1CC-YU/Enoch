@@ -13,6 +13,7 @@ public class Stone_gem : MonoBehaviour
     [HideInInspector]
     public int mPrice;
 
+
     private void Awake()
     {
         CheckState();

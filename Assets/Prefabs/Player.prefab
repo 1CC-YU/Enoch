@@ -118,9 +118,9 @@ MonoBehaviour:
   mSpeed: 5
   mHealth: 200
   mDepend: 70
-  mMastery: 5
+  mMastery: 1
   mPower: 100
-  mLuck: 5
+  mLuck: 1
   mLevel: 7
   mExp: 0
   mMoney: 0

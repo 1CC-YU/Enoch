@@ -24,14 +24,27 @@ public class Player : MonoBehaviour
     [SerializeField]
     private GameObject mHitZone;
 
-    GameObject nearobjet;
-    GameObject gemobject;
+    GameObject nearobject;
+    
 
     public float horizontal;
     public float vertical;
     bool swing;
     bool pickup;
-
+    private void Start()
+    {
+        /*mSpeed = mSave.data.mSpeed;
+        mHealth = mSave.data.health;
+        mDepend = mSave.data.depend;
+        mMastery = mSave.data.mastery;
+        mPower = mSave.data.power;
+        mLuck = mSave.data.luck;
+        mLevel = mSave.data.level;
+        mExp = mSave.data.exp;
+            
+           
+        */
+    }
     private void Awake()
     {
         mAnim = GetComponent<Animator>();
@@ -44,7 +57,7 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         mCurrTime += Time.deltaTime;
-        if (mCurrTime > 300)
+        if (mCurrTime > 3)
         {
             StartCoroutine(Save());
             StartCoroutine(Load());
@@ -120,13 +133,12 @@ public class Player : MonoBehaviour
     }
     private void pickupItem()
     {
-        if (pickup && nearobjet != null)
+        if (pickup && nearobject != null)
         {
-            if (nearobjet.tag == "Gem")
+            if (nearobject.tag == "Gem")
             {
-                Stone_gem gem = gemobject.GetComponent<Stone_gem>();
-                Debug.Log(gem.mPrice);
-                Destroy(nearobjet);
+                nearobject.transform.parent.gameObject.SetActive(false);
+                Destroy(nearobject);
             }
         }
     }
@@ -146,7 +158,7 @@ public class Player : MonoBehaviour
         if (collision.gameObject.tag == "Gem")
         {
 
-            nearobjet = collision.gameObject;
+            nearobject = collision.gameObject;
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
@@ -154,7 +166,7 @@ public class Player : MonoBehaviour
         if(collision.gameObject.tag == "Gem")
         {
 
-            nearobjet = null;
+            nearobject = null;
         }
     }
 

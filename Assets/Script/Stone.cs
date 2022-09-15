@@ -31,15 +31,16 @@ public class Stone : MonoBehaviour
     private float mShakeAmount = 0.05f;
     private Vector3 mInitialPosition;
 
-    Rigidbody2D mGemRigid;
-    Vector2 DropPow;
+    private Rigidbody2D mGemRigid;
+    private Vector2 DropPow;
 
-    Player player;
-
+    [SerializeField]
+    private SaveSaver save;
     private void Start()
     {
         mInitialPosition = transform.position;
         mMining = mMiningDug;
+
     }
 
     private void Awake()
@@ -47,9 +48,18 @@ public class Stone : MonoBehaviour
         mRigid = GetComponent<Rigidbody2D>();
         mBoxCollider = GetComponent<BoxCollider2D>();
         mStoneImage = GetComponent<SpriteRenderer>();
+        save = FindObjectOfType<SaveSaver>();
         CheckState();
-    }
+        Debug.Log(save.data.mastery);
 
+        mGem.SetActive(false);
+    }
+    
+    private void Update()
+    {
+        CheckState();
+
+    }
 
 
     public void OnMined()
@@ -73,49 +83,45 @@ public class Stone : MonoBehaviour
         if ((mMining / mMiningDug) == 0)
         {
             mBoxCollider.enabled = false;
-            Destroy(mStone);
 
             switch (state)
             {
                 case MineralState.Stone:
-
-                    GameObject mStoneGem = Instantiate(mGem);
-                    mStoneGem.transform.position = transform.position;
-                    mGemRigid = mStoneGem.GetComponent<Rigidbody2D>();
+                    mGem.SetActive(true);
+                    mGem.transform.position = transform.position;
+                    mGemRigid = mGem.GetComponent<Rigidbody2D>();
                     DropPow = new Vector2(leftright, updown);
                     mGemRigid.AddForce(DropPow, ForceMode2D.Impulse);
                     mGemRigid.drag = 1.8f;
-
-
                     break;
                 case MineralState.Iron:
-                    GameObject mIronGem = Instantiate(mGem);
-                    mIronGem.transform.position = transform.position;
-                    mGemRigid = mIronGem.GetComponent<Rigidbody2D>();
+                    mGem.SetActive(true);
+                    mGem.transform.position = transform.position;
+                    mGemRigid = mGem.GetComponent<Rigidbody2D>();
                     DropPow = new Vector2(leftright, updown);
                     mGemRigid.AddForce(DropPow, ForceMode2D.Impulse);
                     mGemRigid.drag = 1.8f;
                     break;
                 case MineralState.Copper:
-                    GameObject mCopperGem = Instantiate(mGem);
-                    mCopperGem.transform.position = transform.position;
-                    mGemRigid = mCopperGem.GetComponent<Rigidbody2D>();
+                    mGem.SetActive(true);
+                    mGem.transform.position = transform.position;
+                    mGemRigid = mGem.GetComponent<Rigidbody2D>();
                     DropPow = new Vector2(leftright, updown);
                     mGemRigid.AddForce(DropPow, ForceMode2D.Impulse);
                     mGemRigid.drag = 1.8f;
                     break;
                 case MineralState.Ruby:
-                    GameObject mRubyGem = Instantiate(mGem);
-                    mRubyGem.transform.position = transform.position;
-                    mGemRigid = mRubyGem.GetComponent<Rigidbody2D>();
+                    mGem.SetActive(true);
+                    mGem.transform.position = transform.position;
+                    mGemRigid = mGem.GetComponent<Rigidbody2D>();
                     DropPow = new Vector2(leftright, updown);
                     mGemRigid.AddForce(DropPow, ForceMode2D.Impulse);
                     mGemRigid.drag = 1.8f;
                     break;
                 case MineralState.Diamond:
-                    GameObject mDiamondGem = Instantiate(mGem);
-                    mDiamondGem.transform.position = transform.position;
-                    mGemRigid = mDiamondGem.GetComponent<Rigidbody2D>();
+                    mGem.SetActive(true);
+                    mGem.transform.position = transform.position;
+                    mGemRigid = mGem.GetComponent<Rigidbody2D>();
                     DropPow = new Vector2(leftright, updown);
                     mGemRigid.AddForce(DropPow, ForceMode2D.Impulse);
                     mGemRigid.drag = 1.8f;
@@ -143,112 +149,110 @@ public class Stone : MonoBehaviour
         switch (state)
         {
             case MineralState.Stone:
-                if (player.mMastery >= 1 && player.mMastery > 2)
+                if (save.data.mastery == 1 && save.data.mastery == 2)
                 {
                     mMiningDug = mDBItem.itemList[0].miningDurablility;
                 }
-                else if (player.mMastery >= 3 && player.mMastery < 5)
+                else if(save.data.mastery == 3 && save.data.mastery == 4)
                 {
-                    mMiningDug = mDBItem.itemList[0].miningDurablility - 1;
+                    mMiningDug = mDBItem.itemList[0].miningDurablility-1;
                 }
-                else if (player.mMastery >= 5 && player.mMastery < 7)
+                else if(save.data.mastery == 5&& save.data.mastery == 6)
                 {
-                    mMiningDug = mDBItem.itemList[0].miningDurablility - 2;
+                    mMiningDug = mDBItem.itemList[0].miningDurablility-2;
                 }
-                else if (player.mMastery >= 7 && player.mMastery < 9)
+                else if (save.data.mastery == 7 && save.data.mastery == 8)
                 {
-                    mMiningDug = mDBItem.itemList[0].miningDurablility - 3;
+                    mMiningDug = mDBItem.itemList[0].miningDurablility-3;
                 }
-                else if (player.mMastery >= 9 && player.mMastery <= 10)
+                else if (save.data.mastery == 9 && save.data.mastery == 10)
                 {
-                    mMiningDug = mDBItem.itemList[0].miningDurablility - 4;
+                    mMiningDug = mDBItem.itemList[0].miningDurablility-4;
                 }
+                
                 break;
             case MineralState.Iron:
-                if (player.mMastery >= 1 && player.mMastery < 2)
+                if (save.data.mastery == 1 && save.data.mastery == 2)
                 {
                     mMiningDug = mDBItem.itemList[1].miningDurablility;
                 }
-                else if (player.mMastery >= 3 && player.mMastery < 5)
+                else if (save.data.mastery == 3 && save.data.mastery == 4)
                 {
-                    mMiningDug = mDBItem.itemList[1].miningDurablility - 1;
-
+                    mMiningDug = mDBItem.itemList[1].miningDurablility-1;
                 }
-                else if (player.mMastery >= 5 && player.mMastery < 7)
+                else if (save.data.mastery == 5 && save.data.mastery == 6)
                 {
-                    mMiningDug = mDBItem.itemList[1].miningDurablility - 2;
+                    mMiningDug = mDBItem.itemList[1].miningDurablility-2;
                 }
-                else if (player.mMastery >= 7 && player.mMastery < 9)
+                else if (save.data.mastery == 7 && save.data.mastery == 8)
                 {
-                    mMiningDug = mDBItem.itemList[1].miningDurablility - 3;
+                    mMiningDug = mDBItem.itemList[1].miningDurablility-3;
                 }
-                else if (player.mMastery >= 9 && player.mMastery <= 10)
+                else if (save.data.mastery == 9 && save.data.mastery == 10)
                 {
-                    mMiningDug = mDBItem.itemList[1].miningDurablility - 4;
+                    mMiningDug = mDBItem.itemList[1].miningDurablility-4;
                 }
                 break;
             case MineralState.Copper:
-                if (player.mMastery >= 1 && player.mMastery < 2)
+                if (save.data.mastery == 1 && save.data.mastery == 2)
                 {
                     mMiningDug = mDBItem.itemList[2].miningDurablility;
                 }
-                else if (player.mMastery >= 3 && player.mMastery < 5)
+                else if (save.data.mastery == 3 && save.data.mastery == 4)
                 {
-                    mMiningDug = mDBItem.itemList[2].miningDurablility - 1;
-
+                    mMiningDug = mDBItem.itemList[2].miningDurablility-1;
                 }
-                else if (player.mMastery >= 5 && player.mMastery < 7)
+                else if (save.data.mastery == 5 && save.data.mastery == 6)
                 {
-                    mMiningDug = mDBItem.itemList[2].miningDurablility - 2;
+                    mMiningDug = mDBItem.itemList[2].miningDurablility-2;
                 }
-                else if (player.mMastery >= 7 && player.mMastery < 9)
+                else if (save.data.mastery == 7 && save.data.mastery == 8)
                 {
-                    mMiningDug = mDBItem.itemList[2].miningDurablility - 3;
+                    mMiningDug = mDBItem.itemList[2].miningDurablility-3;
                 }
-                else if (player.mMastery >= 9 && player.mMastery <= 10)
+                else if (save.data.mastery == 9 && save.data.mastery == 10)
                 {
-                    mMiningDug = mDBItem.itemList[2].miningDurablility - 4;
+                    mMiningDug = mDBItem.itemList[2].miningDurablility-4;
                 }
                 break;
             case MineralState.Ruby:
-                if (player.mMastery >= 5 && player.mMastery < 6)
+                if(save.data.mastery == 5)
                 {
                     mMiningDug = mDBItem.itemList[3].miningDurablility;
                 }
-                else if (player.mMastery >= 6 && player.mMastery < 8)
+                else if(save.data.mastery == 6&& save.data.mastery == 7)
                 {
-                    mMiningDug = mDBItem.itemList[3].miningDurablility - 1;
+                    mMiningDug = mDBItem.itemList[3].miningDurablility-1;
                 }
-                else if (player.mMastery >= 8 && player.mMastery < 10)
+                else if(save.data.mastery == 8&& save.data.mastery == 9)
                 {
-                    mMiningDug = mDBItem.itemList[3].miningDurablility - 2;
+                    mMiningDug = mDBItem.itemList[3].miningDurablility-2;
                 }
-                else if (player.mMastery >= 10 && player.mMastery < 11)
+                else if(save.data.mastery == 10)
                 {
-                    mMiningDug = mDBItem.itemList[3].miningDurablility - 3;
+                    mMiningDug = mDBItem.itemList[3].miningDurablility-3;
                 }
                 else
                 {
-                    mMining = 10000;
+                    mMiningDug = 100000;
                 }
                 break;
             case MineralState.Diamond:
-                if (player.mMastery >= 8 && player.mMastery < 9)
+                if(save.data.mastery == 8)
                 {
                     mMiningDug = mDBItem.itemList[4].miningDurablility;
                 }
-                else if (player.mMastery >= 9 && player.mMastery < 10)
+                else if(save.data.mastery == 9)
                 {
-                    mMiningDug = mDBItem.itemList[4].miningDurablility - 1;
+                    mMiningDug = mDBItem.itemList[4].miningDurablility-1;
                 }
-                else if (player.mMastery >= 10 && player.mMastery < 11)
+                else if(save.data.mastery == 10)
                 {
-                    mMiningDug = mDBItem.itemList[4].miningDurablility - 2;
-
+                    mMiningDug = mDBItem.itemList[4].miningDurablility-2;
                 }
                 else
                 {
-                    mMining = 10000;
+                    mMiningDug = 100000;
                 }
                 break;
         }
