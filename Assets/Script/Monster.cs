@@ -14,10 +14,16 @@ public class Monster : MonoBehaviour
     private Animator mAnim;
     private IEnumerator mMovingCoroutine;
     private IEnumerator mChasingCoroutine;
+    private SpriteRenderer mSprite;
+
+    [SerializeField]
+    private int mHp;
+
     void Awake()
     {
         mRB = GetComponent<Rigidbody2D>();
         mAnim = GetComponent<Animator>();
+        mSprite = GetComponentInChildren<SpriteRenderer>();
         mMovingCoroutine = movingMonster();
         mChasingCoroutine = chasingMonster();
         StartCoroutine(mMovingCoroutine);
@@ -59,12 +65,41 @@ public class Monster : MonoBehaviour
         yield return new WaitForSeconds(mMonsterStopTime);
         StartCoroutine(chasingMonster());
     }
+
+    public void onDamage()
+    {
+        
+        if (mHp > 0)
+        {
+            mHp--;
+            mAnim.SetTrigger("onHit");
+        }
+        else if(mHp <= 0)
+        {
+            StartCoroutine(doDie());
+            StopAllCoroutines();
+        }
+    }
+
+    private IEnumerator doDie()
+    {
+        mAnim.SetTrigger("doDie");
+        yield return new WaitForSeconds(1f);
+        gameObject.SetActive(false);
+        Destroy(gameObject);
+
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.CompareTag("Player"))
         {
             StopCoroutine(mMovingCoroutine);
             StartCoroutine(mChasingCoroutine);
+        }
+        if(collision.gameObject.tag == "HitZone")
+        {
+
         }
     }
     private void OnTriggerExit2D(Collider2D collision)

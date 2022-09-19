@@ -480,7 +480,7 @@ AnimatorStateMachine:
     m_Position: {x: 1220, y: 640, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 2872162300663365161}
-    m_Position: {x: 1300, y: 120, z: 0}
+    m_Position: {x: 1430, y: 90, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -6861230279890622633}
     m_Position: {x: 410, y: 650, z: 0}
@@ -1174,12 +1174,6 @@ AnimatorController:
     m_DefaultBool: 1
     m_Controller: {fileID: 0}
   - m_Name: doMining
-    m_Type: 9
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 0}
-  - m_Name: doAttaking
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0

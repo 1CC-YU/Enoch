@@ -12,49 +12,60 @@ public class Player : MonoBehaviour
     public int mLuck;
     public int mLevel;
     public int mExp;
+    public int mMoney;
 
     private float mCurrTime;
 
-    private Rigidbody2D mRB;
     private Animator mAnim;
-    public SaveSaver mSave;
-    public DBManager mDBManager;
-    public GameObject mHitZone;
-    private CapsuleCollider2D mCapCollider;
-
     [SerializeField]
-    private GameObject mStoneGem;
+    private SaveSaver mSave;
+    [SerializeField]
+    private DBManager mDBManager;
+    [SerializeField]
+    private GameObject mHitZone;
+
+    GameObject nearobject;
+    
+
+    public float horizontal;
+    public float vertical;
+    bool swing;
+    bool pickup;
+    
     private void Awake()
     {
         mAnim = GetComponent<Animator>();
-        mRB = gameObject.GetComponent<Rigidbody2D>();
-        mCapCollider = gameObject.GetComponent<CapsuleCollider2D>();
 
-
-        //Save만 해야하는지 Load & Save 해야하는지..
         StartCoroutine(Load());
         StartCoroutine(Save());
-    }
-    private void Update()
-    {
-        movePlayer();
     }
 
     private void FixedUpdate()
     {
         mCurrTime += Time.deltaTime;
-        if (mCurrTime > 300)
+        if (mCurrTime > 3)
         {
             StartCoroutine(Save());
             StartCoroutine(Load());
             mCurrTime = 0;
         }
     }
+    
+    private void Update()
+    {
+        getInput();
+        movePlayer();
+        pickupItem();
+    }
+    private void getInput()
+    {
+        horizontal = Input.GetAxisRaw("Horizontal");
+        vertical = Input.GetAxisRaw("Vertical");
+        swing = Input.GetButtonDown("Jump");
+        pickup = Input.GetButtonDown("Pickup");
+    }
     private void movePlayer()
     {
-        float horizontal = Input.GetAxisRaw("Horizontal");
-        float vertical = Input.GetAxisRaw("Vertical");
-        bool swing = Input.GetButtonDown("Jump");
 
         Vector3 curPos = transform.position;
         Vector3 nextPos = new Vector3(horizontal, vertical, 0).normalized * mSpeed * Time.deltaTime;
@@ -74,11 +85,13 @@ public class Player : MonoBehaviour
             {
                 mAnim.SetBool("Up", true);
                 mHitZone.transform.position = new Vector3(transform.position.x + (-0.02f), transform.position.y + 0.75f, 0);
+                
             }
             else if (direction.y < 0)
             {
                 mAnim.SetBool("Down", true);
                 mHitZone.transform.position = new Vector3(transform.position.x + (-0.02f), transform.position.y + (-0.75f), 0);
+
 
             }
             else if (direction.x > 0)
@@ -86,11 +99,13 @@ public class Player : MonoBehaviour
                 mAnim.SetBool("Right", true);
                 mHitZone.transform.position = new Vector3(transform.position.x + 0.5f, transform.position.y + (-0.2f), 0);
 
+
             }
             else if (direction.x < 0)
             {
                 mAnim.SetBool("Left", true);
                 mHitZone.transform.position = new Vector3(transform.position.x + (-0.5f), transform.position.y + (-0.2f), 0);
+
 
             }
 
@@ -98,15 +113,29 @@ public class Player : MonoBehaviour
 
         if (swing)
         {
+            //휘두를때 멈추기
             mAnim.SetTrigger("doMining");
         }
 
     }
 
-
-    private void OnAttack()
+    private void diePlayer()
     {
-
+        if(mHealth <= 0)
+        {
+            //die
+        }
+    }
+    private void pickupItem()
+    {
+        if (pickup && nearobject != null)
+        {
+            if (nearobject.tag == "Gem")
+            {
+                nearobject.transform.parent.gameObject.SetActive(false);
+                Destroy(nearobject);
+            }
+        }
     }
 
 
@@ -114,20 +143,29 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.tag == "Monster")
         {
-            //공격 당할때 구현
-            Debug.Log("악");
+           
         }
-       if(collision.gameObject.tag == "Gem")
+        
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Gem")
         {
 
+            nearobject = collision.gameObject;
         }
     }
-    
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "Gem")
+        {
 
+            nearobject = null;
+        }
+    }
 
-
-
-
+   
     IEnumerator Save()
     {
         mSave.Saver();
