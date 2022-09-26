@@ -2,17 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// player를 움직이는 script
 public class Player : MonoBehaviour
 {
-    public float mSpeed;
-    public int mHealth;
-    public int mDepend;
-    public int mMastery;
-    public int mPower;
-    public int mLuck;
-    public int mLevel;
-    public int mExp;
-    public int mMoney;
+    public float mSpeed; //player 이동 속도
+    public int mHealth; //player 체력
+    public int mDepend; //player 방어도
+    public int mMastery; //player 숙련도
+    public int mPower; //player 힘
+    public int mLuck; //player 운
+    public int mLevel; //player 레벨
+    public int mExp; //player 경험치
+    public int mMoney; //player 돈
 
     private float mCurrTime;
 
@@ -25,13 +26,13 @@ public class Player : MonoBehaviour
     private GameObject mHitZone;
 
     GameObject nearobject;
-    
+
 
     public float horizontal;
     public float vertical;
     bool swing;
     bool pickup;
-    
+
     private void Awake()
     {
         mAnim = GetComponent<Animator>();
@@ -50,13 +51,16 @@ public class Player : MonoBehaviour
             mCurrTime = 0;
         }
     }
-    
+
     private void Update()
     {
         getInput();
         movePlayer();
         pickupItem();
     }
+    //by으니, getInput() - 220825
+    //Input.Get~ 는 한곳에 모아두는게 좋을 것 같다고 판단.
+    //한곳에 모아두는 메소드
     private void getInput()
     {
         horizontal = Input.GetAxisRaw("Horizontal");
@@ -64,9 +68,12 @@ public class Player : MonoBehaviour
         swing = Input.GetButtonDown("Jump");
         pickup = Input.GetButtonDown("Pickup");
     }
+
+    //by으니, movePlayer() - 220810
+    //Player 움직임 구현
+    //키보드를 이용하여 움직임
     private void movePlayer()
     {
-
         Vector3 curPos = transform.position;
         Vector3 nextPos = new Vector3(horizontal, vertical, 0).normalized * mSpeed * Time.deltaTime;
         transform.position = curPos + nextPos;
@@ -77,62 +84,50 @@ public class Player : MonoBehaviour
         mAnim.SetBool("Down", false);
         mAnim.SetBool("Up", false);
 
-
         if (direction != Vector3.zero)
         {
-
             if (direction.y > 0)
             {
                 mAnim.SetBool("Up", true);
                 mHitZone.transform.position = new Vector3(transform.position.x + (-0.02f), transform.position.y + 0.75f, 0);
-                
             }
             else if (direction.y < 0)
             {
                 mAnim.SetBool("Down", true);
                 mHitZone.transform.position = new Vector3(transform.position.x + (-0.02f), transform.position.y + (-0.75f), 0);
-
-
             }
             else if (direction.x > 0)
             {
                 mAnim.SetBool("Right", true);
                 mHitZone.transform.position = new Vector3(transform.position.x + 0.5f, transform.position.y + (-0.2f), 0);
-
-
             }
             else if (direction.x < 0)
             {
                 mAnim.SetBool("Left", true);
                 mHitZone.transform.position = new Vector3(transform.position.x + (-0.5f), transform.position.y + (-0.2f), 0);
-
-
             }
-
         }
-
         if (swing)
         {
-            //휘두를때 멈추기
             mAnim.SetTrigger("doMining");
         }
-
     }
 
     private void diePlayer()
     {
-        if(mHealth <= 0)
+        if (mHealth <= 0)
         {
             //die
         }
     }
+
+    //by으니, pickupItem() - 220905
     private void pickupItem()
     {
         if (pickup && nearobject != null)
         {
             if (nearobject.tag == "Gem")
             {
-                nearobject.transform.parent.gameObject.SetActive(false);
                 Destroy(nearobject);
             }
         }
@@ -143,29 +138,27 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.tag == "Monster")
         {
-           
+
         }
-        
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Gem")
         {
-
             nearobject = collision.gameObject;
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Gem")
+        if (collision.gameObject.tag == "Gem")
         {
-
             nearobject = null;
         }
     }
 
-   
+    //by으니, Save() && Load() 구현 - 220831
+    //Player 스탯들을 저장&로드
     IEnumerator Save()
     {
         mSave.Saver();

@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// 몬스터를 때리거나, 광석을 캐는 collider를 위해 만든 script
+// 무기가 캐릭터와 따로 디자인 되어있는것이 아니기 때문에 HitZone 이라는 object를 추가하여 구현
 public class HitZone : MonoBehaviour
 {
 
