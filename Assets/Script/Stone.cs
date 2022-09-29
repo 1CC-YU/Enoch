@@ -38,7 +38,7 @@ public class Stone : MonoBehaviour
 
     private float mShakeTime = 2f;
     private float mShakeAmount = 0.05f;
-    private float DestroyTime = 60.0f;
+    private float DestroyTime = 30.0f;
 
     private Vector3 mInitialPosition;
 
@@ -64,6 +64,8 @@ public class Stone : MonoBehaviour
     private bool isLuckChange;
     private void Start()
     {
+        CheckState();
+
         mInitialPosition = transform.position;
         mMining = mMiningDug;
         mMastery = player.mMastery;
