@@ -8,32 +8,34 @@ public class HitZone : MonoBehaviour
 {
 
     private Animator mAnim;
-    private BoxCollider2D mBoxcollider2D;
-
     private float mHorizontal;
     private float mVertical;
 
     void Start()
     {
         mAnim = GetComponent<Animator>();
-        mBoxcollider2D = GetComponent<BoxCollider2D>();
     }
 
-    void Update()
+    //by재그, 2023-07-17
+    //물리적인 계산이 필요없는 충돌뿐이라 OnTrigger 사용
+    private void OnTriggerExit2D(Collider2D collision)
     {
-               
+        if (collision.gameObject.tag == "Monster")
+        {
+            mAnim.SetBool("Right", false);
+            mAnim.SetBool("Left", false);
+            mAnim.SetBool("Down", false);
+            mAnim.SetBool("Up", false);
+        }
     }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
-
-
         if (collision.gameObject.tag == "Stone")
         {
             miningStone(collision.transform);
         }
 
-        if(collision.gameObject.tag == "Monster")
+        if (collision.gameObject.tag == "Monster")
         {
             mHorizontal = Input.GetAxisRaw("Horizontal");
             mVertical = Input.GetAxisRaw("Vertical");
@@ -69,23 +71,17 @@ public class HitZone : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if(collision.gameObject.tag == "Monster")
-        {
-            mAnim.SetBool("Right", false);
-            mAnim.SetBool("Left", false);
-            mAnim.SetBool("Down", false);
-            mAnim.SetBool("Up", false);
-        }
-    }
+    //by재그,2023-07-17
+    //돌 캐기
     private void miningStone(Transform pStone)
     {
         Stone stone = pStone.GetComponent<Stone>();
         stone.OnMined();
-        
+
     }
 
+    //by재그, 2023-07-17
+    //몬스터 때리기
     private void attackMonster(Transform pMonster)
     {
         Monster monster = pMonster.GetComponent<Monster>();

@@ -12,102 +12,119 @@ public class Monster : MonoBehaviour
     private Transform mPlayerPos;
     private Rigidbody2D mRB;
     private Animator mAnim;
-    private IEnumerator mMovingCoroutine;
-    private IEnumerator mChasingCoroutine;
-    private SpriteRenderer mSprite;
-
     [SerializeField]
     private int mHp;
 
+    private bool Chase;
+
+
     void Awake()
     {
+        Chase = false;
         mRB = GetComponent<Rigidbody2D>();
         mAnim = GetComponent<Animator>();
-        mSprite = GetComponentInChildren<SpriteRenderer>();
-        mMovingCoroutine = movingMonster();
-        mChasingCoroutine = chasingMonster();
-        StartCoroutine(mMovingCoroutine);
+
+        //gameObject의 활성화 여부로 코루틴 실행
+        if (gameObject.activeSelf == false)
+            return;
+
+        StartCoroutine("movingMonster");
     }
-    void FixedUpdate()
-    {
-        
-    }
+
     private IEnumerator movingMonster()
     {
+        if (gameObject.activeSelf == false)
+            StopAllCoroutines();
+
         float horizontal = Random.Range(StringHelper.MIN_VECTOR, StringHelper.MAX_VECTOR);
         float vertical = Random.Range(StringHelper.MIN_VECTOR, StringHelper.MAX_VECTOR);
-        if(horizontal == 0 && vertical ==0)
+        if (horizontal == 0 && vertical == 0)
         {
             mAnim.SetBool("IsMoving", false);
         }
         else
         {
-            mAnim.SetBool("IsMoving",true);
+            mAnim.SetBool("IsMoving", true);
         }
         mRB.velocity = new Vector2(horizontal, vertical);
         yield return new WaitForSeconds(mMonsterMovingTime);
+
         mAnim.SetBool("IsMoving", false);
         mRB.velocity = Vector2.zero;
         yield return new WaitForSeconds(mMonsterStopTime);
-        StartCoroutine(movingMonster());
+
+        StartCoroutine("movingMonster");
     }
     private IEnumerator chasingMonster()
     {
-        float monsterPosX = transform.position.x;
-        float monsterPosY = transform.position.y;
-        float playerPosX = mPlayerPos.transform.position.x;
-        float playerPosY = mPlayerPos.transform.position.y;
-        mAnim.SetBool("IsMoving", true);
-        mRB.velocity = new Vector2(playerPosX - monsterPosX, playerPosY - monsterPosY);
-        yield return new WaitForSeconds(mMonsterMovingTime);
-        mAnim.SetBool("IsMoving", false);
-        mRB.velocity = Vector2.zero;
-        yield return new WaitForSeconds(mMonsterStopTime);
-        StartCoroutine(chasingMonster());
+        if (Chase == false)
+        {
+            StartCoroutine("movingMonster");
+            StopCoroutine("chasingMonster");
+        }
+        else
+        {
+            float monsterPosX = transform.position.x;
+            float monsterPosY = transform.position.y;
+            float playerPosX = mPlayerPos.transform.position.x;
+            float playerPosY = mPlayerPos.transform.position.y;
+
+            mAnim.SetBool("IsMoving", true);
+            mRB.velocity = new Vector2(playerPosX - monsterPosX, playerPosY - monsterPosY);
+            yield return new WaitForSeconds(mMonsterMovingTime);
+
+            mAnim.SetBool("IsMoving", false);
+            mRB.velocity = Vector2.zero;
+            yield return new WaitForSeconds(mMonsterStopTime);
+
+            StartCoroutine("chasingMonster");
+        }
     }
 
     public void onDamage()
     {
-        
         if (mHp > 0)
         {
             mHp--;
             mAnim.SetTrigger("onHit");
         }
-        else if(mHp <= 0)
+        else if (mHp <= 0)
         {
-            StartCoroutine(doDie());
-            StopAllCoroutines();
+            doDie();
         }
     }
 
-    private IEnumerator doDie()
+    private void doDie()
     {
         mAnim.SetTrigger("doDie");
-        yield return new WaitForSeconds(1f);
+        Invoke("DeActive", 1);
+    }
+    private void DeActive()
+    {
+        Chase = false;
         gameObject.SetActive(false);
         Destroy(gameObject);
-
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.CompareTag("Player"))
+        if (collision.CompareTag("Player"))
         {
-            StopCoroutine(mMovingCoroutine);
-            StartCoroutine(mChasingCoroutine);
-        }
-        if(collision.gameObject.tag == "HitZone")
-        {
-
+            Chase = true;
+            StopCoroutine("movingMonster");
+            StartCoroutine("chasingMonster");
         }
     }
+
+    //by재그, 2023-07-17
+    //StartCoroutin("movingMonster") 대신에 Awake()로 순회함
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            StopCoroutine(mChasingCoroutine);
-            StartCoroutine(mMovingCoroutine);
+            Chase = false;
+            StopCoroutine("chasingMonster");
+            Awake();
         }
     }
 }
