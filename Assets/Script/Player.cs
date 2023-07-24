@@ -121,7 +121,7 @@ public class Player : MonoBehaviour
         //damaged
     }
 
-    private void OnDie()
+    private void diePlayer()
     {
         if (mHealth > 0)
         {
