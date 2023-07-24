@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
     private float mCurrTime;
 
     private Animator mAnim;
+    private Animation mAnimation;
     [SerializeField]
     private SaveSaver mSave;
     [SerializeField]
@@ -36,7 +37,7 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         mAnim = GetComponent<Animator>();
-
+        mAnimation = GetComponent<Animation>();
         StartCoroutine(Load());
         StartCoroutine(Save());
     }
@@ -113,12 +114,28 @@ public class Player : MonoBehaviour
         }
     }
 
+    
+
+    private void OnAttack(Transform enemy)
+    {
+        //damaged
+    }
+
     private void diePlayer()
     {
-        if (mHealth <= 0)
+        if (mHealth > 0)
+        {
+            //Damaged
+        }
+        else if(mHealth <= 0)
         {
             //die
         }
+    }
+
+    private void OnDamaged(Vector2 targetPos)
+    {
+        //맞는 애니메이션이랑 죽는 모션 없음
     }
 
     //by으니, pickupItem() - 220905
@@ -142,6 +159,8 @@ public class Player : MonoBehaviour
         }
     }
 
+    //by재그, 드롭된 아이템 먹기
+    //gem 먹기
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Gem")
@@ -157,8 +176,9 @@ public class Player : MonoBehaviour
         }
     }
 
-    //by으니, Save() && Load() 구현 - 220831
+    //by재그, Save() && Load() 구현 - 220831
     //Player 스탯들을 저장&로드
+    //5분마다 자동 저장
     IEnumerator Save()
     {
         mSave.Saver();
