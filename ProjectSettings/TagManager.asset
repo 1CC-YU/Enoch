@@ -8,7 +8,10 @@ TagManager:
   - NPC
   - Stone
   - Gem
-  - HitZone
+  - Gem4
+  - Gem3
+  - Gem1
+  - Gem2
   layers:
   - Default
   - TransparentFX
