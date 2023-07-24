@@ -4,117 +4,49 @@ using UnityEngine;
 
 public class ObjectManager : MonoBehaviour
 {
-    GameObject[] stoneGem;
-    GameObject[] ironGem;
-    GameObject[] copperGem;
-    GameObject[] rubyGem;
-    GameObject[] diamondGem;
-    GameObject[] targetPool;
+    //enum으로 하던 배열로 하던 늘려서 구리, 루비 다 넣어야함.
+    GameObject itemGem;
 
+    GameObject targetPool;
 
-    [SerializeField]
-    GameObject stoneGemPrefab;
-    [SerializeField]
-    GameObject ironGemPrefab;
-    [SerializeField]
-    GameObject copperGemPrefab;
-    [SerializeField]
-    GameObject rubyGemPrefab;
-    [SerializeField]
-    GameObject diamondGemPrefab;
-
-
+    public GameObject itemGemProfab;
 
     private void Awake()
     {
-        stoneGem = new GameObject[20];
-        ironGem = new GameObject[20];
-        copperGem = new GameObject[20];
-        rubyGem = new GameObject[20];
-        diamondGem = new GameObject[20];
-
         Generate();
     }
 
     private void Generate()
     {
-        for(int index = 0; index < stoneGem.Length; index++)
-        {
-            stoneGem[index] = Instantiate(stoneGemPrefab);
-            stoneGem[index].SetActive(false);
-        }
-        for (int index = 0; index < ironGem.Length; index++)
-        {
-            ironGem[index] = Instantiate(ironGemPrefab);
-            ironGem[index].SetActive(false);
-        }
-        for (int index = 0; index < copperGem.Length; index++)
-        {
-            copperGem[index] = Instantiate(copperGemPrefab);
-            copperGem[index].SetActive(false);
-        }
-        for (int index = 0; index < rubyGem.Length; index++)
-        {
-            rubyGem[index] = Instantiate(rubyGemPrefab);
-            rubyGem[index].SetActive(false);
-        }
-        for (int index = 0; index < diamondGem.Length; index++)
-        {
-            diamondGem[index] = Instantiate(diamondGemPrefab);
-            diamondGem[index].SetActive(false);
-        }
-
+        
+            itemGem = Instantiate(itemGemProfab);
+            itemGem.SetActive(false);
+        
     }
     public GameObject MakeObj(Stone_gem.MineralState type)
     {
         switch (type)
         {
             case Stone_gem.MineralState.Stone_gem:
-                targetPool = stoneGem;
-                break;
-            case Stone_gem.MineralState.Iron_gem:
-                targetPool = ironGem;
-                break;
-            case Stone_gem.MineralState.Copper_gem:
-                targetPool = copperGem;
-                break;
-            case Stone_gem.MineralState.Ruby_gem:
-                targetPool = rubyGem;
-                break;
-            case Stone_gem.MineralState.Diamond_gem:
-                targetPool = diamondGem;
+                targetPool = itemGem;
+                
                 break;
         }
-        for(int index = 0; index<targetPool.Length; index++)
+        if (!targetPool.activeSelf)
         {
-            if (!targetPool[index].activeSelf && targetPool[index]!= null)
-            {
-                targetPool[index].SetActive(true);
-                return targetPool[index];
-            }
+            targetPool.SetActive(true);
+            return targetPool;
         }
-        
+
         return null;
     }
 
-    public GameObject []GetPool(Stone_gem.MineralState type)
+    public GameObject GetPool(Stone_gem.MineralState type)
     {
         switch (type)
         {
             case Stone_gem.MineralState.Stone_gem:
-                targetPool = stoneGem;
-                break;
-            case Stone_gem.MineralState.Iron_gem:
-                targetPool = ironGem;
-                break;
-            case Stone_gem.MineralState.Copper_gem:
-                targetPool = copperGem;
-                break;
-            case Stone_gem.MineralState.Ruby_gem:
-                targetPool = rubyGem;
-                break;
-            case Stone_gem.MineralState.Diamond_gem:
-                targetPool = diamondGem;
+                targetPool = itemGem;
                 break;
         }
         return targetPool;
