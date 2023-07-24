@@ -1,11 +1,11 @@
 {
     "mSpeed": 5.0,
-    "health": 50,
-    "depend": 50,
-    "mastery": 10,
+    "health": 335,
+    "depend": 70,
+    "mastery": 50,
     "power": 100,
-    "luck": 8,
-    "level": 1,
+    "luck": 5,
+    "level": 7,
     "exp": 0,
     "items": [],
     "itemsCount": []

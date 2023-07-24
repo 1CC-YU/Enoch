@@ -6,7 +6,7 @@ using System.IO;
 
 public class SaveSaver : MonoBehaviour
 {
-    public Player thePlayer;
+    private Player thePlayer;
     public PlayerData data;
     [ContextMenu("To Json Data")]
     public void Saver()
