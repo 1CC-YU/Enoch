@@ -14,6 +14,7 @@ public class Stone_gem : MonoBehaviour
     public int mPrice;
 
 
+
     private void Awake()
     {
         CheckState();
@@ -41,6 +42,4 @@ public class Stone_gem : MonoBehaviour
 
         }
     }
-
-
 }

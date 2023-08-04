@@ -59,7 +59,7 @@ public class Player : MonoBehaviour
         movePlayer();
         pickupItem();
     }
-    //by으니, getInput() - 220825
+    //by으니, getInput() - 230703
     //Input.Get~ 는 한곳에 모아두는게 좋을 것 같다고 판단.
     //한곳에 모아두는 메소드
     private void getInput()
@@ -70,7 +70,7 @@ public class Player : MonoBehaviour
         pickup = Input.GetButtonDown("Pickup");
     }
 
-    //by으니, movePlayer() - 220810
+    //by으니, movePlayer() - 230622
     //Player 움직임 구현
     //키보드를 이용하여 움직임
     private void movePlayer()
@@ -138,7 +138,7 @@ public class Player : MonoBehaviour
         //맞는 애니메이션이랑 죽는 모션 없음
     }
 
-    //by으니, pickupItem() - 220905
+    //by으니, pickupItem() - 230625
     private void pickupItem()
     {
         if (pickup && nearobject != null)
@@ -176,7 +176,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    //by재그, Save() && Load() 구현 - 220831
+    //by재그, Save() && Load() 구현 - 230521
     //Player 스탯들을 저장&로드
     //5분마다 자동 저장
     IEnumerator Save()

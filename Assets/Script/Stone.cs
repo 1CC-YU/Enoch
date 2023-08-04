@@ -112,11 +112,12 @@ public class Stone : MonoBehaviour
     }
 
 
-    //by으니, OnMined() - 220926
+    //by으니, OnMined() - 230621
     //채광 구현
     //Player의 Luck레벨에 따라 아이템 드랍 갯수 조정
     //pooling이 아니기 때문에 destroy와 SetActive(true),SetActive(false)로 조정
     //DestroyTime = 60 : 60초 후에 Stone Object 파괴
+    //최적화 필요함. (DB 상태 때문에 수정 불가하여 이렇게 만듦.)
     public void OnMined()
     {
 
@@ -401,7 +402,7 @@ public class Stone : MonoBehaviour
         }
     }
 
-    //by 으니, 숙련도&운 레벨 변경 시 CheckState() 실행 - 220926
+    //by 으니, 숙련도&운 레벨 변경 시 CheckState() 실행 - 230621
     //Player의 스탯이 변경될때 바로바로 CheckState()가 반영되지 않아, 
     //변경을 감지하는 메소드 구현
     IEnumerator changeMastery()
