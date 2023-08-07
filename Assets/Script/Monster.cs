@@ -17,12 +17,14 @@ public class Monster : MonoBehaviour
 
     private bool Chase;
 
+    Collider2D mCollider;
 
     void Awake()
     {
         Chase = false;
         mRB = GetComponent<Rigidbody2D>();
         mAnim = GetComponent<Animator>();
+        mCollider = GetComponent<Collider2D>();
 
         //gameObject의 활성화 여부로 코루틴 실행
         if (gameObject.activeSelf == false)
@@ -78,6 +80,8 @@ public class Monster : MonoBehaviour
             yield return new WaitForSeconds(mMonsterStopTime);
 
             StartCoroutine("chasingMonster");
+            OffCollider();
+            Invoke("OnCollider", mMonsterStopTime);
         }
     }
 
@@ -87,6 +91,8 @@ public class Monster : MonoBehaviour
         {
             mHp--;
             mAnim.SetTrigger("onHit");
+            OffCollider();
+            Invoke("OnCollider", 2f);
         }
         else if (mHp <= 0)
         {
@@ -94,10 +100,12 @@ public class Monster : MonoBehaviour
         }
     }
 
+    //by재은, 몬스터 죽는 모습 구현 - 230718
+    
     private void doDie()
     {
         mAnim.SetTrigger("doDie");
-        Invoke("DeActive", 1);
+        Invoke("DeActive", 2f);
     }
     private void DeActive()
     {
@@ -106,17 +114,31 @@ public class Monster : MonoBehaviour
         Destroy(gameObject);
     }
 
+    private void OnCollider()
+    {
+        mCollider.enabled = true;
+    }
+    private void OffCollider()
+    {
+        mCollider.enabled = false;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        //Plyaer랑 닿으면 Chasing한다음 5초간 Collider 끄기
+        if (collision.gameObject.tag == "Player")
         {
             Chase = true;
             StopCoroutine("movingMonster");
             StartCoroutine("chasingMonster");
+
         }
     }
 
-    //by재그, 2023-07-17
+
+
+
+    //by재은, 2023-07-17
     //StartCoroutin("movingMonster") 대신에 Awake()로 순회함
     private void OnTriggerExit2D(Collider2D collision)
     {

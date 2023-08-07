@@ -18,7 +18,6 @@ public class Player : MonoBehaviour
     private float mCurrTime;
 
     private Animator mAnim;
-    private Animation mAnimation;
     [SerializeField]
     private SaveSaver mSave;
     [SerializeField]
@@ -33,17 +32,18 @@ public class Player : MonoBehaviour
     public float vertical;
     bool swing;
     bool pickup;
+    bool isDead = false;
 
     private void Awake()
     {
         mAnim = GetComponent<Animator>();
-        mAnimation = GetComponent<Animation>();
         StartCoroutine(Load());
         StartCoroutine(Save());
     }
 
     private void FixedUpdate()
     {
+
         mCurrTime += Time.deltaTime;
         if (mCurrTime > 3)
         {
@@ -55,11 +55,13 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        if (isDead) return;
+
         getInput();
         movePlayer();
         pickupItem();
     }
-    //by으니, getInput() - 230703
+    //by재은, getInput() - 230703
     //Input.Get~ 는 한곳에 모아두는게 좋을 것 같다고 판단.
     //한곳에 모아두는 메소드
     private void getInput()
@@ -70,7 +72,7 @@ public class Player : MonoBehaviour
         pickup = Input.GetButtonDown("Pickup");
     }
 
-    //by으니, movePlayer() - 230622
+    //by재은, movePlayer() - 230622
     //Player 움직임 구현
     //키보드를 이용하여 움직임
     private void movePlayer()
@@ -90,22 +92,22 @@ public class Player : MonoBehaviour
             if (direction.y > 0)
             {
                 mAnim.SetBool("Up", true);
-                mHitZone.transform.position = new Vector3(transform.position.x + (-0.02f), transform.position.y + 0.75f, 0);
+                mHitZone.transform.position = new Vector3(transform.position.x + (-0.02f), transform.position.y + 1f, 0);
             }
             else if (direction.y < 0)
             {
                 mAnim.SetBool("Down", true);
-                mHitZone.transform.position = new Vector3(transform.position.x + (-0.02f), transform.position.y + (-0.75f), 0);
+                mHitZone.transform.position = new Vector3(transform.position.x + (-0.02f), transform.position.y + (-1.5f), 0);
             }
             else if (direction.x > 0)
             {
                 mAnim.SetBool("Right", true);
-                mHitZone.transform.position = new Vector3(transform.position.x + 0.5f, transform.position.y + (-0.2f), 0);
+                mHitZone.transform.position = new Vector3(transform.position.x + 1.5f, transform.position.y + (-0.2f), 0);
             }
             else if (direction.x < 0)
             {
                 mAnim.SetBool("Left", true);
-                mHitZone.transform.position = new Vector3(transform.position.x + (-0.5f), transform.position.y + (-0.2f), 0);
+                mHitZone.transform.position = new Vector3(transform.position.x + (-1f), transform.position.y + (-0.2f), 0);
             }
         }
         if (swing)
@@ -114,31 +116,35 @@ public class Player : MonoBehaviour
         }
     }
 
-    
 
-    private void OnAttack(Transform enemy)
-    {
-        //damaged
-    }
+    //by재은, OnDamaged() - 230807
+    //Monster에 닿았을 때 맞기. (Collider 하나 더 해야할듯(하위 오브젝트))
+    //무조건 맞으면서 때림...
+    //Monster와 충돌했을 때, hp--
 
-    private void diePlayer()
+    public void OnDamaged()
     {
         if (mHealth > 0)
         {
             //Damaged
+            mHealth--;
+            mAnim.SetTrigger("OnDamaged");
         }
         else if(mHealth <= 0)
         {
             //die
+            doDie();
         }
     }
+    
 
-    private void OnDamaged(Vector2 targetPos)
+    private void doDie()
     {
-        //맞는 애니메이션이랑 죽는 모션 없음
+        isDead = true;
+        mAnim.SetTrigger("DoDie");
     }
 
-    //by으니, pickupItem() - 230625
+    //by재은, pickupItem() - 230625
     private void pickupItem()
     {
         if (pickup && nearobject != null)
@@ -153,13 +159,12 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Monster")
+        if(collision.gameObject.tag == "Monster")
         {
-
+            OnDamaged();
         }
     }
-
-    //by재그, 드롭된 아이템 먹기
+    //by재은, 드롭된 아이템 먹기 - 230520
     //gem 먹기
     private void OnTriggerStay2D(Collider2D collision)
     {
@@ -176,7 +181,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    //by재그, Save() && Load() 구현 - 230521
+    //by재은, Save() && Load() 구현 - 230521
     //Player 스탯들을 저장&로드
     //5분마다 자동 저장
     IEnumerator Save()

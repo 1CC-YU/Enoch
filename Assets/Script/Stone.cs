@@ -9,7 +9,6 @@ public class Stone : MonoBehaviour
 
     [SerializeField]
     private DBManager mDBItem;
-    private Rigidbody2D mRigid;
     private BoxCollider2D mBoxCollider;
     private SpriteRenderer mStoneImage;
 
@@ -80,7 +79,6 @@ public class Stone : MonoBehaviour
     {
         CheckState();
 
-        mRigid = GetComponent<Rigidbody2D>();
         mBoxCollider = GetComponent<BoxCollider2D>();
         mStoneImage = GetComponent<SpriteRenderer>();
         player = FindObjectOfType<Player>();
@@ -112,7 +110,7 @@ public class Stone : MonoBehaviour
     }
 
 
-    //by으니, OnMined() - 230621
+    //by재은, OnMined() - 230621
     //채광 구현
     //Player의 Luck레벨에 따라 아이템 드랍 갯수 조정
     //pooling이 아니기 때문에 destroy와 SetActive(true),SetActive(false)로 조정
@@ -402,7 +400,7 @@ public class Stone : MonoBehaviour
         }
     }
 
-    //by 으니, 숙련도&운 레벨 변경 시 CheckState() 실행 - 230621
+    //by 재은, 숙련도&운 레벨 변경 시 CheckState() 실행 - 230621
     //Player의 스탯이 변경될때 바로바로 CheckState()가 반영되지 않아, 
     //변경을 감지하는 메소드 구현
     IEnumerator changeMastery()
@@ -419,8 +417,8 @@ public class Stone : MonoBehaviour
         yield return new WaitWhile(() => isLuckChange == true);
     }
 
-    //by으니, Shake()
-    //돌이 맞았을때, 흔들림 구현 - 220902
+    //by재은, Shake()
+    //돌이 맞았을때, 흔들림 구현 - 2300623
     private void Shake()
     {
         if (mShakeTime > 0)

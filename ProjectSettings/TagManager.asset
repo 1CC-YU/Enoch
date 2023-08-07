@@ -12,6 +12,7 @@ TagManager:
   - Gem3
   - Gem1
   - Gem2
+  - HitZone
   layers:
   - Default
   - TransparentFX
@@ -23,7 +24,7 @@ TagManager:
   - Monster
   - Gem
   - Stone
-  - 
+  - HitZone
   - 
   - 
   - 

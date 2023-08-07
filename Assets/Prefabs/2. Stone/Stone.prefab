@@ -222,7 +222,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3653157438344938197, guid: 25281d98380fc7e42b8f05e0cb2e840f, type: 3}
       propertyPath: m_TagString
-      value: Gem4
+      value: Gem
       objectReference: {fileID: 0}
     - target: {fileID: 6263431962932144333, guid: 25281d98380fc7e42b8f05e0cb2e840f, type: 3}
       propertyPath: m_SortingOrder
@@ -301,7 +301,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3653157438344938197, guid: 25281d98380fc7e42b8f05e0cb2e840f, type: 3}
       propertyPath: m_TagString
-      value: Gem3
+      value: Gem
       objectReference: {fileID: 0}
     - target: {fileID: 6263431962932144333, guid: 25281d98380fc7e42b8f05e0cb2e840f, type: 3}
       propertyPath: m_SortingOrder
@@ -380,7 +380,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3653157438344938197, guid: 25281d98380fc7e42b8f05e0cb2e840f, type: 3}
       propertyPath: m_TagString
-      value: Gem1
+      value: Gem
       objectReference: {fileID: 0}
     - target: {fileID: 6263431962932144333, guid: 25281d98380fc7e42b8f05e0cb2e840f, type: 3}
       propertyPath: m_SortingOrder
@@ -459,7 +459,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3653157438344938197, guid: 25281d98380fc7e42b8f05e0cb2e840f, type: 3}
       propertyPath: m_TagString
-      value: Gem2
+      value: Gem
       objectReference: {fileID: 0}
     - target: {fileID: 6263431962932144333, guid: 25281d98380fc7e42b8f05e0cb2e840f, type: 3}
       propertyPath: m_SortingOrder
